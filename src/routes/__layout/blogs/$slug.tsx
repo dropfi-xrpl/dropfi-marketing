@@ -23,6 +23,7 @@ import Highlight from '@tiptap/extension-highlight';
 import Typography from '@tiptap/extension-typography';
 import TaskList from '@tiptap/extension-task-list';
 import TaskItem from '@tiptap/extension-task-item';
+import DownloadSection from '@/components/index/DownloadSection';
 
 export const Route = createFileRoute('/__layout/blogs/$slug')({
   loader: async ({ context, params }) => {
@@ -162,6 +163,8 @@ function RouteComponent() {
           <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
             <TipTapRenderer content={currentPost.contentJSON} />
           </div>
+
+          <DownloadSection />
 
           {/* Footer */}
           <footer className="mt-16 pt-8 border-t border-border">

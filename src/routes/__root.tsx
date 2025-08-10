@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext } from '@tanstack/react-router';
+import { HeadContent, Link, Outlet, ScriptOnce, Scripts, createRootRouteWithContext } from '@tanstack/react-router';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import * as React from 'react';
@@ -81,47 +81,38 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html className="dark" style={{ colorScheme: 'dark' }}>
       <head>
         <HeadContent />
-
-        {hydrated && (
-          <>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag() {
-                      dataLayer.push(arguments);
-                  }
-                  gtag('js', new Date());
-                  gtag('config', 'G-MSDS4LGSVY');
-                `,
-              }}
-            />
-            <noscript
-              dangerouslySetInnerHTML={{
-                __html: `
-                  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX7FJMRF"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-                `,
-              }}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  (function (w, d, s, l, i) {
-                      w[l] = w[l] || [];
-                      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-                      var f = d.getElementsByTagName(s)[0],
-                          j = d.createElement(s),
-                          dl = l != 'dataLayer' ? '&l=' + l : '';
-                      j.async = true;
-                      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                      f.parentNode.insertBefore(j, f);
-                  })(window, document, 'script', 'dataLayer', 'GTM-MX7FJMRF');
-              `,
-              }}
-            />
-          </>
-        )}
+        <ScriptOnce>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-MSDS4LGSVY');
+          `}
+        </ScriptOnce>
+        <ScriptOnce>
+          {`
+            function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MX7FJMRF');
+            `}
+        </ScriptOnce>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MX7FJMRF"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
       </head>
       <body>
         <Toaster richColors />
