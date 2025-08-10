@@ -2,42 +2,42 @@
 
 @font-face {
   font-family: 'Guton';
-  src: url('/src/assets/guton/Guton-Black.otf') format('opentype');
+  src: url('/assets/Guton/Guton-Black.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Guton';
-  src: url('/src/assets/guton/Guton-ExtraBold.otf') format('opentype');
+  src: url('/assets/Guton/Guton-ExtraBold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Guton';
-  src: url('/src/assets/guton/Guton-Bold.otf') format('opentype');
+  src: url('/assets/Guton/Guton-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Guton';
-  src: url('/src/assets/guton/Guton-SemiBold.otf') format('opentype');
+  src: url('/assets/Guton/Guton-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Guton';
-  src: url('/src/assets/guton/Guton-Medium.otf') format('opentype');
+  src: url('/assets/Guton/Guton-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Guton';
-  src: url('/src/assets/guton/Guton-Regular.otf') format('opentype');
+  src: url('/assets/Guton/Guton-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
@@ -387,7 +387,8 @@ All colors MUST be HSL.
 }
 
 @keyframes float-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
@@ -396,7 +397,8 @@ All colors MUST be HSL.
 }
 
 @keyframes float-medium {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
@@ -405,7 +407,8 @@ All colors MUST be HSL.
 }
 
 @keyframes float-fast {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {

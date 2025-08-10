@@ -46,7 +46,7 @@ const DifferentiatorSection = () => {
                 viewport={{ once: true }}
                 className="gradient-card border border-primary/30 rounded-xl p-5 flex items-center justify-between"
               >
-                <span className="text-sm text-primary-foreground/80">DropFi</span>
+                <span className="text-sm text-white">DropFi</span>
                 <span className="text-lg font-semibold text-gradient">{c.ours}</span>
               </motion.div>
             ))}
