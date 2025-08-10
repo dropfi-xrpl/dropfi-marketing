@@ -11,7 +11,7 @@ const Hero = () => {
             <span>Loved by developers worldwide</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium leading-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium leading-tight max-w-5xl mx-auto">
             Finally, a Modern <span className="text-gradient">XRP Wallet</span> That Doesn't <span className="text-primary">Suck</span>
           </h1>
 

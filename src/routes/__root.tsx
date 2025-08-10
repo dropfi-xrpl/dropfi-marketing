@@ -8,6 +8,7 @@ import appCss from '@/styles/app.css?url';
 import { createSEO } from '@/utils/create-seo';
 import { XrplProvider } from '@dropfi/xrpl-react';
 import { Toaster } from 'sonner';
+import { useHydrated } from '@/hooks/use-hydrated';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -50,6 +51,12 @@ export const Route = createRootRouteWithContext<{
         { rel: 'icon', href: '/favicon.ico' },
         ...seoData.links,
       ],
+      scripts: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-MSDS4LGSVY',
+          async: true,
+        },
+      ],
     };
   },
   errorComponent: (props) => <RootDocument>{props.error.message}</RootDocument>,
@@ -67,11 +74,53 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   // Get theme from middleware cookie or something.
+  const hydrated = useHydrated();
 
   return (
     <html className="dark" style={{ colorScheme: 'dark' }}>
       <head>
         <HeadContent />
+
+        {hydrated && (
+          <>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag() {
+                      dataLayer.push(arguments);
+                  }
+                  gtag('js', new Date());
+                  gtag('config', 'G-MSDS4LGSVY');
+                `,
+              }}
+            />
+            <noscript
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX7FJMRF"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                `,
+              }}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  (function (w, d, s, l, i) {
+                      w[l] = w[l] || [];
+                      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                      var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s),
+                          dl = l != 'dataLayer' ? '&l=' + l : '';
+                      j.async = true;
+                      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                      f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-MX7FJMRF');
+              `,
+              }}
+            />
+          </>
+        )}
       </head>
       <body>
         <Toaster richColors />
