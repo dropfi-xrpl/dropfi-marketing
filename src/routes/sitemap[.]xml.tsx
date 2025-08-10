@@ -26,6 +26,20 @@ export const ServerRoute = createServerFileRoute('/sitemap.xml').methods({
         changeFrequency: 'monthly',
       },
 
+      {
+        loc: `${baseUrl}/privacy-policy`,
+        priority: 0.9,
+        lastmod: new Date().toISOString(),
+        changeFrequency: 'monthly',
+      },
+
+      {
+        loc: `${baseUrl}/terms-of-service`,
+        priority: 0.9,
+        lastmod: new Date().toISOString(),
+        changeFrequency: 'monthly',
+      },
+
       // Documentation index page
       {
         loc: `${baseUrl}/docs`,

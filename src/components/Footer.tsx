@@ -84,8 +84,16 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/50 text-center text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-border/50 text-center text-muted-foreground flex flex-col gap-1">
           <p>&copy; 2025 DropFi. Liberation layer for XRP. All rights reserved.</p>
+          <div className="flex justify-center items-center gap-2">
+            <Link to="/privacy-policy" className="hover:text-primary underline transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-of-service" className="hover:text-primary underline transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

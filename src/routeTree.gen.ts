@@ -14,7 +14,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as _layoutRouteImport } from './routes/__layout'
 import { Route as _documentationRouteImport } from './routes/__documentation'
 import { Route as _layoutIndexRouteImport } from './routes/__layout/index'
+import { Route as _layoutTermsOfServiceRouteImport } from './routes/__layout/terms-of-service'
 import { Route as _layoutSupportRouteImport } from './routes/__layout/support'
+import { Route as _layoutPrivacyPolicyRouteImport } from './routes/__layout/privacy-policy'
 import { Route as _documentationDocsIndexRouteImport } from './routes/__documentation/docs/index'
 import { Route as _documentationDocsPageRouteImport } from './routes/__documentation/docs/$page'
 import { ServerRoute as SitemapDotxmlServerRouteImport } from './routes/sitemap[.]xml'
@@ -34,9 +36,19 @@ const _layoutIndexRoute = _layoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => _layoutRoute,
 } as any)
+const _layoutTermsOfServiceRoute = _layoutTermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => _layoutRoute,
+} as any)
 const _layoutSupportRoute = _layoutSupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => _layoutRoute,
+} as any)
+const _layoutPrivacyPolicyRoute = _layoutPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => _layoutRoute,
 } as any)
 const _documentationDocsIndexRoute = _documentationDocsIndexRouteImport.update({
@@ -56,13 +68,17 @@ const SitemapDotxmlServerRoute = SitemapDotxmlServerRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/privacy-policy': typeof _layoutPrivacyPolicyRoute
   '/support': typeof _layoutSupportRoute
+  '/terms-of-service': typeof _layoutTermsOfServiceRoute
   '/': typeof _layoutIndexRoute
   '/docs/$page': typeof _documentationDocsPageRoute
   '/docs': typeof _documentationDocsIndexRoute
 }
 export interface FileRoutesByTo {
+  '/privacy-policy': typeof _layoutPrivacyPolicyRoute
   '/support': typeof _layoutSupportRoute
+  '/terms-of-service': typeof _layoutTermsOfServiceRoute
   '/': typeof _layoutIndexRoute
   '/docs/$page': typeof _documentationDocsPageRoute
   '/docs': typeof _documentationDocsIndexRoute
@@ -71,21 +87,37 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/__documentation': typeof _documentationRouteWithChildren
   '/__layout': typeof _layoutRouteWithChildren
+  '/__layout/privacy-policy': typeof _layoutPrivacyPolicyRoute
   '/__layout/support': typeof _layoutSupportRoute
+  '/__layout/terms-of-service': typeof _layoutTermsOfServiceRoute
   '/__layout/': typeof _layoutIndexRoute
   '/__documentation/docs/$page': typeof _documentationDocsPageRoute
   '/__documentation/docs/': typeof _documentationDocsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/support' | '/' | '/docs/$page' | '/docs'
+  fullPaths:
+    | '/privacy-policy'
+    | '/support'
+    | '/terms-of-service'
+    | '/'
+    | '/docs/$page'
+    | '/docs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/support' | '/' | '/docs/$page' | '/docs'
+  to:
+    | '/privacy-policy'
+    | '/support'
+    | '/terms-of-service'
+    | '/'
+    | '/docs/$page'
+    | '/docs'
   id:
     | '__root__'
     | '/__documentation'
     | '/__layout'
+    | '/__layout/privacy-policy'
     | '/__layout/support'
+    | '/__layout/terms-of-service'
     | '/__layout/'
     | '/__documentation/docs/$page'
     | '/__documentation/docs/'
@@ -140,11 +172,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _layoutIndexRouteImport
       parentRoute: typeof _layoutRoute
     }
+    '/__layout/terms-of-service': {
+      id: '/__layout/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof _layoutTermsOfServiceRouteImport
+      parentRoute: typeof _layoutRoute
+    }
     '/__layout/support': {
       id: '/__layout/support'
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof _layoutSupportRouteImport
+      parentRoute: typeof _layoutRoute
+    }
+    '/__layout/privacy-policy': {
+      id: '/__layout/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof _layoutPrivacyPolicyRouteImport
       parentRoute: typeof _layoutRoute
     }
     '/__documentation/docs/': {
@@ -190,12 +236,16 @@ const _documentationRouteWithChildren = _documentationRoute._addFileChildren(
 )
 
 interface _layoutRouteChildren {
+  _layoutPrivacyPolicyRoute: typeof _layoutPrivacyPolicyRoute
   _layoutSupportRoute: typeof _layoutSupportRoute
+  _layoutTermsOfServiceRoute: typeof _layoutTermsOfServiceRoute
   _layoutIndexRoute: typeof _layoutIndexRoute
 }
 
 const _layoutRouteChildren: _layoutRouteChildren = {
+  _layoutPrivacyPolicyRoute: _layoutPrivacyPolicyRoute,
   _layoutSupportRoute: _layoutSupportRoute,
+  _layoutTermsOfServiceRoute: _layoutTermsOfServiceRoute,
   _layoutIndexRoute: _layoutIndexRoute,
 }
 
