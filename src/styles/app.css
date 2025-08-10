@@ -221,7 +221,7 @@
 }
 
 @utility gradient-hero {
-  background: var(--gradient-hero);
+  background: linear-gradient(135deg, hsl(195, 100%, 55%) 0%, hsl(195, 100%, 75%) 100%);
 }
 
 @utility gradient-card {
@@ -274,12 +274,12 @@ All colors MUST be HSL.
     --popover-foreground: 210 40% 95%;
 
     /* Liberation Blue - Core Brand */
-    --primary: 195 100% 55%;
-    --primary-foreground: 219 28% 8%;
-    --primary-glow: 195 100% 75%;
+    --primary: 215 100% 50%; /* Coinbase brand blue */
+    --primary-foreground: 0 0% 100%; /* White text for contrast */
+    --primary-glow: 215 100% 70%; /* Bright glow variant *
 
     /* Subtle Contrasts */
-    --secondary: 219 20% 18%;
+    --secondary: #00e676;
     --secondary-foreground: 210 40% 88%;
 
     --muted: 219 20% 15%;
@@ -296,7 +296,7 @@ All colors MUST be HSL.
     --ring: 195 100% 55%;
 
     /* Liberation Gradients */
-    --gradient-text: linear-gradient(135deg, rgba(255, 255, 255, 1) 40%, hsl(195, 100%, 75%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(var(--primary)) 40%, hsl(var(--primary-glow)) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(195, 100%, 55%) 0%, hsl(195, 100%, 75%) 100%);
     --gradient-bg: radial-gradient(ellipse at top, hsl(219, 28%, 12%) 0%, hsl(219, 28%, 8%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(219, 28%, 12%) 0%, hsl(219, 20%, 15%) 100%);
@@ -474,4 +474,27 @@ All colors MUST be HSL.
 
 .read-the-docs {
   color: #888;
+}
+
+/* Premium button styles */
+.btn-gradient {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px -2px hsl(195, 100%, 55% / 0.3);
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
 }
