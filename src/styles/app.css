@@ -235,6 +235,13 @@
   background-clip: text;
 }
 
+@utility text-gradient-light {
+  background: var(--gradient-light-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 @utility animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -296,7 +303,8 @@ All colors MUST be HSL.
     --ring: 195 100% 55%;
 
     /* Liberation Gradients */
-    --gradient-text: linear-gradient(135deg, hsl(var(--primary)) 40%, hsl(var(--primary-glow)) 100%);
+    --gradient-light-text: linear-gradient(135deg, rgba(255, 255, 255, 1) 40%, hsl(195, 100%, 75%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 80%, rgba(255, 255, 255, 0.5) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(195, 100%, 55%) 0%, hsl(195, 100%, 75%) 100%);
     --gradient-bg: radial-gradient(ellipse at top, hsl(219, 28%, 12%) 0%, hsl(219, 28%, 8%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(219, 28%, 12%) 0%, hsl(219, 20%, 15%) 100%);
