@@ -335,6 +335,11 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial,
+      'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --editor-max-width: 65ch;
   }
 
   .dark {
@@ -505,4 +510,54 @@ All colors MUST be HSL.
 
 .btn-gradient:hover::before {
   left: 100%;
+}
+
+.tiptap {
+  @apply text-base leading-7 break-words;
+  font-family: var(--font-serif);
+}
+.tiptap h1 {
+  @apply text-4xl md:text-5xl font-semibold mb-4;
+}
+.tiptap h2 {
+  @apply text-3xl md:text-4xl font-semibold mt-8 mb-3;
+}
+.tiptap h3 {
+  @apply text-2xl md:text-3xl font-semibold mt-6 mb-2;
+}
+.tiptap p {
+  @apply my-4;
+}
+.tiptap a {
+  @apply underline decoration-[hsl(var(--ring))] underline-offset-4;
+}
+.tiptap blockquote {
+  @apply border-l-4 pl-4 italic text-muted-foreground;
+}
+.tiptap ul {
+  @apply list-disc pl-6 my-4;
+}
+.tiptap ol {
+  @apply list-decimal pl-6 my-4;
+}
+.tiptap hr {
+  @apply my-8 border-muted;
+}
+.tiptap pre {
+  @apply rounded-lg p-4 bg-secondary text-secondary-foreground overflow-x-auto;
+}
+.tiptap img {
+  @apply rounded-lg my-6 mx-auto;
+  max-height: 640px;
+}
+.tiptap .task-list {
+  @apply pl-0;
+}
+.tiptap .task-list-item {
+  @apply list-none;
+}
+
+.bubble-menu,
+.floating-menu {
+  @apply z-30;
 }

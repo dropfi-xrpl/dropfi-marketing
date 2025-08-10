@@ -15,6 +15,10 @@ Crawl-delay: 1
 Allow: /docs/
 Allow: /docs/*
 
+# Allow all blog pages
+Allow: /blogs/
+Allow: /blogs/*
+
 # Allow all assets
 Allow: /assets/
 Allow: /public/

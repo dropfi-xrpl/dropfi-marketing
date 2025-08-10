@@ -29,6 +29,9 @@ const Header = () => {
           <Link to="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
             Docs
           </Link>
+          <Link to="/blogs" className="text-muted-foreground hover:text-foreground transition-colors">
+            Blog
+          </Link>
           <Link to={'/support' as any} className="text-muted-foreground hover:text-foreground transition-colors">
             Support
           </Link>
@@ -67,6 +70,11 @@ const Header = () => {
                       <a href="/docs" className="px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
                         Docs
                       </a>
+                    </DrawerClose>
+                    <DrawerClose asChild>
+                      <Link to="/blogs" className="px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
+                        Blog
+                      </Link>
                     </DrawerClose>
                     <DrawerClose asChild>
                       <Link to={'/support' as any} className="px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">

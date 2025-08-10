@@ -13,13 +13,20 @@ import { createServerRootRoute } from '@tanstack/react-start/server'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as _layoutRouteImport } from './routes/__layout'
 import { Route as _documentationRouteImport } from './routes/__documentation'
+import { Route as _adminRouteImport } from './routes/__admin'
 import { Route as _layoutIndexRouteImport } from './routes/__layout/index'
 import { Route as _layoutTermsOfServiceRouteImport } from './routes/__layout/terms-of-service'
 import { Route as _layoutSupportRouteImport } from './routes/__layout/support'
 import { Route as _layoutPrivacyPolicyRouteImport } from './routes/__layout/privacy-policy'
+import { Route as _layoutLoginRouteImport } from './routes/__layout/login'
+import { Route as _layoutBlogsIndexRouteImport } from './routes/__layout/blogs/index'
 import { Route as _documentationDocsIndexRouteImport } from './routes/__documentation/docs/index'
+import { Route as _layoutBlogsSlugRouteImport } from './routes/__layout/blogs/$slug'
 import { Route as _documentationDocsPageRouteImport } from './routes/__documentation/docs/$page'
+import { Route as _adminPostBuilderIdRouteImport } from './routes/__admin/post-builder.$id'
 import { ServerRoute as SitemapDotxmlServerRouteImport } from './routes/sitemap[.]xml'
+import { ServerRoute as ApiAuthSignServerRouteImport } from './routes/api/auth/sign'
+import { ServerRoute as ApiAuthLogoutServerRouteImport } from './routes/api/auth/logout'
 
 const rootServerRouteImport = createServerRootRoute()
 
@@ -29,6 +36,10 @@ const _layoutRoute = _layoutRouteImport.update({
 } as any)
 const _documentationRoute = _documentationRouteImport.update({
   id: '/__documentation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const _adminRoute = _adminRouteImport.update({
+  id: '/__admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const _layoutIndexRoute = _layoutIndexRouteImport.update({
@@ -51,102 +62,167 @@ const _layoutPrivacyPolicyRoute = _layoutPrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => _layoutRoute,
 } as any)
+const _layoutLoginRoute = _layoutLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => _layoutRoute,
+} as any)
+const _layoutBlogsIndexRoute = _layoutBlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
+  getParentRoute: () => _layoutRoute,
+} as any)
 const _documentationDocsIndexRoute = _documentationDocsIndexRouteImport.update({
   id: '/docs/',
   path: '/docs/',
   getParentRoute: () => _documentationRoute,
+} as any)
+const _layoutBlogsSlugRoute = _layoutBlogsSlugRouteImport.update({
+  id: '/blogs/$slug',
+  path: '/blogs/$slug',
+  getParentRoute: () => _layoutRoute,
 } as any)
 const _documentationDocsPageRoute = _documentationDocsPageRouteImport.update({
   id: '/docs/$page',
   path: '/docs/$page',
   getParentRoute: () => _documentationRoute,
 } as any)
+const _adminPostBuilderIdRoute = _adminPostBuilderIdRouteImport.update({
+  id: '/post-builder/$id',
+  path: '/post-builder/$id',
+  getParentRoute: () => _adminRoute,
+} as any)
 const SitemapDotxmlServerRoute = SitemapDotxmlServerRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootServerRouteImport,
 } as any)
+const ApiAuthSignServerRoute = ApiAuthSignServerRouteImport.update({
+  id: '/api/auth/sign',
+  path: '/api/auth/sign',
+  getParentRoute: () => rootServerRouteImport,
+} as any)
+const ApiAuthLogoutServerRoute = ApiAuthLogoutServerRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootServerRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/login': typeof _layoutLoginRoute
   '/privacy-policy': typeof _layoutPrivacyPolicyRoute
   '/support': typeof _layoutSupportRoute
   '/terms-of-service': typeof _layoutTermsOfServiceRoute
   '/': typeof _layoutIndexRoute
+  '/post-builder/$id': typeof _adminPostBuilderIdRoute
   '/docs/$page': typeof _documentationDocsPageRoute
+  '/blogs/$slug': typeof _layoutBlogsSlugRoute
   '/docs': typeof _documentationDocsIndexRoute
+  '/blogs': typeof _layoutBlogsIndexRoute
 }
 export interface FileRoutesByTo {
+  '/login': typeof _layoutLoginRoute
   '/privacy-policy': typeof _layoutPrivacyPolicyRoute
   '/support': typeof _layoutSupportRoute
   '/terms-of-service': typeof _layoutTermsOfServiceRoute
   '/': typeof _layoutIndexRoute
+  '/post-builder/$id': typeof _adminPostBuilderIdRoute
   '/docs/$page': typeof _documentationDocsPageRoute
+  '/blogs/$slug': typeof _layoutBlogsSlugRoute
   '/docs': typeof _documentationDocsIndexRoute
+  '/blogs': typeof _layoutBlogsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/__admin': typeof _adminRouteWithChildren
   '/__documentation': typeof _documentationRouteWithChildren
   '/__layout': typeof _layoutRouteWithChildren
+  '/__layout/login': typeof _layoutLoginRoute
   '/__layout/privacy-policy': typeof _layoutPrivacyPolicyRoute
   '/__layout/support': typeof _layoutSupportRoute
   '/__layout/terms-of-service': typeof _layoutTermsOfServiceRoute
   '/__layout/': typeof _layoutIndexRoute
+  '/__admin/post-builder/$id': typeof _adminPostBuilderIdRoute
   '/__documentation/docs/$page': typeof _documentationDocsPageRoute
+  '/__layout/blogs/$slug': typeof _layoutBlogsSlugRoute
   '/__documentation/docs/': typeof _documentationDocsIndexRoute
+  '/__layout/blogs/': typeof _layoutBlogsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/login'
     | '/privacy-policy'
     | '/support'
     | '/terms-of-service'
     | '/'
+    | '/post-builder/$id'
     | '/docs/$page'
+    | '/blogs/$slug'
     | '/docs'
+    | '/blogs'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/login'
     | '/privacy-policy'
     | '/support'
     | '/terms-of-service'
     | '/'
+    | '/post-builder/$id'
     | '/docs/$page'
+    | '/blogs/$slug'
     | '/docs'
+    | '/blogs'
   id:
     | '__root__'
+    | '/__admin'
     | '/__documentation'
     | '/__layout'
+    | '/__layout/login'
     | '/__layout/privacy-policy'
     | '/__layout/support'
     | '/__layout/terms-of-service'
     | '/__layout/'
+    | '/__admin/post-builder/$id'
     | '/__documentation/docs/$page'
+    | '/__layout/blogs/$slug'
     | '/__documentation/docs/'
+    | '/__layout/blogs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  _adminRoute: typeof _adminRouteWithChildren
   _documentationRoute: typeof _documentationRouteWithChildren
   _layoutRoute: typeof _layoutRouteWithChildren
 }
 export interface FileServerRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlServerRoute
+  '/api/auth/logout': typeof ApiAuthLogoutServerRoute
+  '/api/auth/sign': typeof ApiAuthSignServerRoute
 }
 export interface FileServerRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlServerRoute
+  '/api/auth/logout': typeof ApiAuthLogoutServerRoute
+  '/api/auth/sign': typeof ApiAuthSignServerRoute
 }
 export interface FileServerRoutesById {
   __root__: typeof rootServerRouteImport
   '/sitemap.xml': typeof SitemapDotxmlServerRoute
+  '/api/auth/logout': typeof ApiAuthLogoutServerRoute
+  '/api/auth/sign': typeof ApiAuthSignServerRoute
 }
 export interface FileServerRouteTypes {
   fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/sitemap.xml'
+  fullPaths: '/sitemap.xml' | '/api/auth/logout' | '/api/auth/sign'
   fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/sitemap.xml'
-  id: '__root__' | '/sitemap.xml'
+  to: '/sitemap.xml' | '/api/auth/logout' | '/api/auth/sign'
+  id: '__root__' | '/sitemap.xml' | '/api/auth/logout' | '/api/auth/sign'
   fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
   SitemapDotxmlServerRoute: typeof SitemapDotxmlServerRoute
+  ApiAuthLogoutServerRoute: typeof ApiAuthLogoutServerRoute
+  ApiAuthSignServerRoute: typeof ApiAuthSignServerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -163,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: ''
       preLoaderRoute: typeof _documentationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/__admin': {
+      id: '/__admin'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof _adminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/__layout/': {
@@ -193,6 +276,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _layoutPrivacyPolicyRouteImport
       parentRoute: typeof _layoutRoute
     }
+    '/__layout/login': {
+      id: '/__layout/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof _layoutLoginRouteImport
+      parentRoute: typeof _layoutRoute
+    }
+    '/__layout/blogs/': {
+      id: '/__layout/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs'
+      preLoaderRoute: typeof _layoutBlogsIndexRouteImport
+      parentRoute: typeof _layoutRoute
+    }
     '/__documentation/docs/': {
       id: '/__documentation/docs/'
       path: '/docs'
@@ -200,12 +297,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _documentationDocsIndexRouteImport
       parentRoute: typeof _documentationRoute
     }
+    '/__layout/blogs/$slug': {
+      id: '/__layout/blogs/$slug'
+      path: '/blogs/$slug'
+      fullPath: '/blogs/$slug'
+      preLoaderRoute: typeof _layoutBlogsSlugRouteImport
+      parentRoute: typeof _layoutRoute
+    }
     '/__documentation/docs/$page': {
       id: '/__documentation/docs/$page'
       path: '/docs/$page'
       fullPath: '/docs/$page'
       preLoaderRoute: typeof _documentationDocsPageRouteImport
       parentRoute: typeof _documentationRoute
+    }
+    '/__admin/post-builder/$id': {
+      id: '/__admin/post-builder/$id'
+      path: '/post-builder/$id'
+      fullPath: '/post-builder/$id'
+      preLoaderRoute: typeof _adminPostBuilderIdRouteImport
+      parentRoute: typeof _adminRoute
     }
   }
 }
@@ -218,8 +329,33 @@ declare module '@tanstack/react-start/server' {
       preLoaderRoute: typeof SitemapDotxmlServerRouteImport
       parentRoute: typeof rootServerRouteImport
     }
+    '/api/auth/sign': {
+      id: '/api/auth/sign'
+      path: '/api/auth/sign'
+      fullPath: '/api/auth/sign'
+      preLoaderRoute: typeof ApiAuthSignServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
   }
 }
+
+interface _adminRouteChildren {
+  _adminPostBuilderIdRoute: typeof _adminPostBuilderIdRoute
+}
+
+const _adminRouteChildren: _adminRouteChildren = {
+  _adminPostBuilderIdRoute: _adminPostBuilderIdRoute,
+}
+
+const _adminRouteWithChildren =
+  _adminRoute._addFileChildren(_adminRouteChildren)
 
 interface _documentationRouteChildren {
   _documentationDocsPageRoute: typeof _documentationDocsPageRoute
@@ -236,23 +372,30 @@ const _documentationRouteWithChildren = _documentationRoute._addFileChildren(
 )
 
 interface _layoutRouteChildren {
+  _layoutLoginRoute: typeof _layoutLoginRoute
   _layoutPrivacyPolicyRoute: typeof _layoutPrivacyPolicyRoute
   _layoutSupportRoute: typeof _layoutSupportRoute
   _layoutTermsOfServiceRoute: typeof _layoutTermsOfServiceRoute
   _layoutIndexRoute: typeof _layoutIndexRoute
+  _layoutBlogsSlugRoute: typeof _layoutBlogsSlugRoute
+  _layoutBlogsIndexRoute: typeof _layoutBlogsIndexRoute
 }
 
 const _layoutRouteChildren: _layoutRouteChildren = {
+  _layoutLoginRoute: _layoutLoginRoute,
   _layoutPrivacyPolicyRoute: _layoutPrivacyPolicyRoute,
   _layoutSupportRoute: _layoutSupportRoute,
   _layoutTermsOfServiceRoute: _layoutTermsOfServiceRoute,
   _layoutIndexRoute: _layoutIndexRoute,
+  _layoutBlogsSlugRoute: _layoutBlogsSlugRoute,
+  _layoutBlogsIndexRoute: _layoutBlogsIndexRoute,
 }
 
 const _layoutRouteWithChildren =
   _layoutRoute._addFileChildren(_layoutRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  _adminRoute: _adminRouteWithChildren,
   _documentationRoute: _documentationRouteWithChildren,
   _layoutRoute: _layoutRouteWithChildren,
 }
@@ -261,6 +404,8 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 const rootServerRouteChildren: RootServerRouteChildren = {
   SitemapDotxmlServerRoute: SitemapDotxmlServerRoute,
+  ApiAuthLogoutServerRoute: ApiAuthLogoutServerRoute,
+  ApiAuthSignServerRoute: ApiAuthSignServerRoute,
 }
 export const serverRouteTree = rootServerRouteImport
   ._addFileChildren(rootServerRouteChildren)

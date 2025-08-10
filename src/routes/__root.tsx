@@ -9,6 +9,7 @@ import { createSEO } from '@/utils/create-seo';
 import { XrplProvider } from '@dropfi/xrpl-react';
 import { Toaster } from 'sonner';
 import { useHydrated } from '@/hooks/use-hydrated';
+import WalletWrapper from '@/wrappers/WalletWrapper';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -124,7 +125,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Toaster richColors />
-        <XrplProvider>{children}</XrplProvider>
+        <XrplProvider>
+          <WalletWrapper>{children}</WalletWrapper>
+        </XrplProvider>
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
         <Scripts />
