@@ -1,0 +1,626 @@
+{
+  "title": "DropFi Mobile App",
+  "description": "The DropFi Mobile App extends the functionality of the DropFi Wallet to mobile devices, providing a secure and user-friendly experience for managing XRP and XRPL tokens on the go.",
+  "sections": [
+    {
+      "type": "section",
+      "id": "overview",
+      "title": "Overview",
+      "components": [
+        {
+          "type": "header",
+          "title": "DropFi Mobile App",
+          "subtitle": "Manage your XRPL assets on the go",
+          "icon": "Smartphone"
+        },
+        {
+          "type": "text",
+          "text": "The DropFi Mobile App extends the functionality of the DropFi Wallet to mobile devices, providing a secure and user-friendly experience for managing XRP and XRPL tokens on the go. Available for both iOS and Android, the mobile app offers the same powerful features as the desktop version with mobile-optimized interfaces.",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Cross-Platform",
+              "description": "Available for iOS and Android devices",
+              "icon": "Smartphone",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Biometric Security",
+              "description": "Face ID, Touch ID, and fingerprint support",
+              "icon": "Shield",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Cloud Backup",
+              "description": "Secure encrypted backup to iCloud or Google",
+              "icon": "Cloud",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Mobile Optimized",
+              "description": "Touch-friendly interface designed for mobile",
+              "icon": "Smartphone",
+              "color": "bg-primary-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "platform-differences",
+      "title": "Platform Differences",
+      "components": [
+        {
+          "type": "text",
+          "text": "While the DropFi Mobile App provides consistent functionality across platforms, there are some platform-specific features:",
+          "variant": "body"
+        },
+        {
+          "type": "grid",
+          "cols": 2,
+          "children": [
+            {
+              "type": "card",
+              "variant": "highlighted",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "iOS Specific Features",
+                  "variant": "h3"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Face ID support on iPhone X and newer models",
+                    "Touch ID support on older models",
+                    "Keychain integration for secure storage",
+                    "Encrypted iCloud backup for data safety"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "highlighted",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Android Specific Features",
+                  "variant": "h3"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Fingerprint sensor support",
+                    "Face unlock support (varies by device)",
+                    "Encrypted Google backup for data safety",
+                    "Pattern unlock option for added security"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "installation",
+      "title": "Installation",
+      "components": [
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Download from App Store",
+              "description": "Search for \"DropFi Wallet\" in the App Store or Google Play Store",
+              "details": "Ensure you're downloading the official DropFi Wallet app from the verified developer"
+            },
+            {
+              "step": 2,
+              "title": "Install and Launch",
+              "description": "Install the app and launch it for the first time",
+              "details": "Grant necessary permissions for notifications and biometric authentication if prompted"
+            },
+            {
+              "step": 3,
+              "title": "Set Up Security",
+              "description": "Configure your preferred security method (PIN, biometrics, or both)",
+              "details": "This will be your primary method for accessing the wallet"
+            },
+            {
+              "step": 4,
+              "title": "Create or Import Wallet",
+              "description": "Set up a new wallet or import an existing one using your seed phrase",
+              "details": "For new users, the app will generate a secure 24-word recovery phrase"
+            }
+          ]
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "info",
+              "title": "Official Sources",
+              "description": "Only download from official app stores to ensure security and authenticity.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Permissions",
+              "description": "The app requires camera access for QR code scanning and biometric access for security.",
+              "icon": "AlertTriangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "account-settings",
+      "title": "Account Settings",
+      "components": [
+        {
+          "type": "text",
+          "text": "Manage your wallet account and preferences:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Wallet Information",
+              "description": "View address, QR code, balance, creation date, and network status",
+              "icon": "Info",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "Backup & Recovery",
+              "description": "Access recovery phrase, secret numbers, private key export, and cloud backup",
+              "icon": "Cloud",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "Multiple Wallets",
+              "description": "Manage multiple wallets with options to switch, add, or remove wallets",
+              "icon": "Database",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "Network Settings",
+              "description": "Configure custom RPC endpoints and network preferences",
+              "icon": "Globe",
+              "color": "bg-blue-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "security-settings",
+      "title": "Security Settings",
+      "components": [
+        {
+          "type": "text",
+          "text": "Configure your mobile app's security features:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "PIN & Biometrics",
+              "description": "Set up PIN codes and enable biometric authentication for enhanced security",
+              "icon": "Shield",
+              "color": "bg-amber-500/10"
+            },
+            {
+              "title": "Privacy Options",
+              "description": "Configure privacy settings, including hiding balances and blocking screenshots",
+              "icon": "Eye",
+              "color": "bg-amber-500/10"
+            },
+            {
+              "title": "Auto-Lock",
+              "description": "Set automatic locking after periods of inactivity",
+              "icon": "Clock",
+              "color": "bg-amber-500/10"
+            },
+            {
+              "title": "Transaction Limits",
+              "description": "Set daily and per-transaction spending limits",
+              "icon": "DollarSign",
+              "color": "bg-amber-500/10"
+            }
+          ]
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "warning",
+              "title": "Biometric Security",
+              "description": "Enable biometric authentication for quick and secure access to your wallet.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "Privacy Features",
+              "description": "Use privacy features to protect your financial information when sharing your screen.",
+              "icon": "Info"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "appearance-settings",
+      "title": "Appearance Settings",
+      "components": [
+        {
+          "type": "text",
+          "text": "Customize the look and feel of your mobile app:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Themes",
+              "description": "Choose between light, dark, or system themes",
+              "icon": "Palette",
+              "color": "bg-purple-500/10"
+            },
+            {
+              "title": "Display Options",
+              "description": "Customize the home screen layout and other display preferences",
+              "icon": "Layout",
+              "color": "bg-purple-500/10"
+            },
+            {
+              "title": "Currency Display",
+              "description": "Set your preferred fiat currency for balance display",
+              "icon": "DollarSign",
+              "color": "bg-purple-500/10"
+            },
+            {
+              "title": "Language",
+              "description": "Select your preferred language for the app interface",
+              "icon": "Globe",
+              "color": "bg-purple-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "notifications",
+      "title": "Notifications",
+      "components": [
+        {
+          "type": "text",
+          "text": "Stay informed about your wallet activity:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Transaction Alerts",
+              "description": "Get notified of incoming and outgoing transactions",
+              "icon": "Bell",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Security Updates",
+              "description": "Receive alerts about security-related events",
+              "icon": "Shield",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "App Updates",
+              "description": "Stay informed about new features and updates",
+              "icon": "Download",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Price Alerts",
+              "description": "Set custom price alerts for XRP and other tokens",
+              "icon": "TrendingUp",
+              "color": "bg-green-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "quick-tips",
+      "title": "Quick Tips",
+      "components": [
+        {
+          "type": "text",
+          "text": "Essential tips for getting the most out of your mobile app:",
+          "variant": "body"
+        },
+        {
+          "type": "grid",
+          "cols": 2,
+          "children": [
+            {
+              "type": "card",
+              "variant": "success",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Essential Settings",
+                  "variant": "h4"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Enable biometrics for quick access",
+                    "Set your preferred appearance theme",
+                    "Configure notification preferences",
+                    "Enable cloud backup for safety",
+                    "Customize home screen layout"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "success",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Privacy Focused",
+                  "variant": "h4"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Hide balances for added privacy",
+                    "Block screenshots to prevent captures",
+                    "Enable private mode by default",
+                    "Limit notifications to essentials",
+                    "Opt out of cloud backup if preferred"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "power-user-features",
+      "title": "Power User Features",
+      "components": [
+        {
+          "type": "text",
+          "text": "Advanced features for experienced users:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Multiple Wallets",
+              "description": "Manage multiple wallets for different purposes",
+              "icon": "Database",
+              "color": "bg-indigo-500/10"
+            },
+            {
+              "title": "Custom Themes",
+              "description": "Create and customize themes to suit your style",
+              "icon": "Palette",
+              "color": "bg-indigo-500/10"
+            },
+            {
+              "title": "Debug Mode",
+              "description": "Enable debug mode for troubleshooting",
+              "icon": "Code",
+              "color": "bg-indigo-500/10"
+            },
+            {
+              "title": "Custom API Endpoints",
+              "description": "Configure custom API endpoints if needed",
+              "icon": "Globe",
+              "color": "bg-indigo-500/10"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "These features provide advanced customization and management options for users who want more control over their wallet experience.",
+          "variant": "small"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "reset-options",
+      "title": "Reset Options",
+      "components": [
+        {
+          "type": "text",
+          "text": "Various reset options available in the mobile app:",
+          "variant": "body"
+        },
+        {
+          "type": "grid",
+          "cols": 2,
+          "children": [
+            {
+              "type": "card",
+              "variant": "warning",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Partial Resets",
+                  "variant": "h4"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Reset cache",
+                    "Reset appearance settings",
+                    "Reset notification preferences",
+                    "Reset contacts",
+                    "Reset security settings"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "warning",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Factory Reset",
+                  "variant": "h4"
+                },
+                {
+                  "type": "text",
+                  "text": "Perform a complete reset to restore the app to its original state. Note: This requires the recovery phrase to restore the wallet.",
+                  "variant": "body"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "warning",
+              "title": "Backup First",
+              "description": "Always ensure you have your recovery phrase before performing any reset operations.",
+              "icon": "AlertTriangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "troubleshooting",
+      "title": "Troubleshooting",
+      "components": [
+        {
+          "type": "text",
+          "text": "Common issues and solutions for the mobile app:",
+          "variant": "body"
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "warning",
+              "title": "App Crashes",
+              "description": "Try restarting the app or your device. Ensure you have the latest version installed.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "Biometric Issues",
+              "description": "Check your device's biometric settings and ensure the app has proper permissions.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Sync Problems",
+              "description": "Check your internet connection and try refreshing the app. Verify cloud backup is enabled.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "Performance Issues",
+              "description": "Clear app cache, restart the app, or check if your device has sufficient storage.",
+              "icon": "Info"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "support-resources",
+      "title": "Support & Resources",
+      "components": [
+        {
+          "type": "text",
+          "text": "Get help and access additional resources:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "In-App Help",
+              "description": "Access help directly within the app",
+              "icon": "HelpCircle",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Documentation",
+              "description": "Comprehensive guides and tutorials",
+              "icon": "BookOpen",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Community",
+              "description": "Join our Discord and Telegram communities",
+              "icon": "Users",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Support Team",
+              "description": "Get direct help from our support team",
+              "icon": "MessageCircle",
+              "color": "bg-green-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "next-steps",
+      "title": "Next Steps",
+      "components": [
+        {
+          "type": "call-to-action",
+          "title": "Ready to Get Started?",
+          "description": "Download the DropFi Mobile App and start managing your XRPL assets on the go.",
+          "buttons": [
+            {
+              "text": "Download for iOS",
+              "icon": "Download",
+              "variant": "default",
+              "className": "bg-primary-500 hover:bg-primary-600",
+              "showArrow": true
+            },
+            {
+              "text": "Download for Android",
+              "variant": "outline",
+              "icon": "Download",
+              "showArrow": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "title": "DropFi Extension",
+  "description": "The DropFi Chrome Extension brings the power of the XRP Ledger directly to your browser, enabling seamless interaction with DApps and Web3 applications.",
+  "sections": [
+    {
+      "type": "section",
+      "id": "overview",
+      "title": "Overview",
+      "components": [
+        {
+          "type": "header",
+          "title": "DropFi Chrome Extension",
+          "subtitle": "Access XRPL directly from your browser",
+          "icon": "Globe"
+        },
+        {
+          "type": "text",
+          "text": "The DropFi Chrome Extension brings the power of the XRP Ledger directly to users' browsers, enabling seamless interaction with DApps and Web3 applications. Connect to any XRPL DApp with a single click and manage your XRP and tokens securely.",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Direct Browser Integration",
+              "description": "Connect to any XRPL DApp with a single click",
+              "icon": "Zap",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Popup & Expanded Views",
+              "description": "Quick access through popup or full-screen management",
+              "icon": "Maximize",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Password Protection",
+              "description": "Secure encryption with user-defined passwords",
+              "icon": "Shield",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Developer Friendly",
+              "description": "Full window.xrpl API for DApp integration",
+              "icon": "Code",
+              "color": "bg-primary-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "installation",
+      "title": "Installation",
+      "components": [
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Visit Chrome Web Store",
+              "description": "Search for \"DropFi Wallet\" or visit the Chrome Web Store",
+              "details": "Navigate to the Chrome Web Store and locate the DropFi Wallet extension"
+            },
+            {
+              "step": 2,
+              "title": "Add to Chrome",
+              "description": "Click \"Add to Chrome\" and confirm permissions",
+              "details": "Review the permissions and click \"Add extension\" to install"
+            },
+            {
+              "step": 3,
+              "title": "Pin for Easy Access",
+              "description": "Click the puzzle piece icon and pin DropFi Wallet",
+              "details": "This ensures quick access to your wallet from the browser toolbar"
+            },
+            {
+              "step": 4,
+              "title": "Set Up Your Wallet",
+              "description": "Create a new wallet or import an existing one",
+              "details": "Follow the setup wizard to secure your wallet with a password"
+            }
+          ]
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "info",
+              "title": "Browser Compatibility",
+              "description": "DropFi Extension works with Chrome, Edge, and other Chromium-based browsers.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Permissions Required",
+              "description": "The extension requires access to read and change data on websites you visit.",
+              "icon": "AlertTriangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "getting-started",
+      "title": "Getting Started",
+      "components": [
+        {
+          "type": "text",
+          "text": "Once installed, follow these steps to get started with your DropFi Extension:",
+          "variant": "body"
+        },
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Create or Import Wallet",
+              "description": "Set up a new wallet or import using your seed phrase",
+              "details": "For new users, DropFi will generate a secure 24-word seed phrase. Write this down and store it safely."
+            },
+            {
+              "step": 2,
+              "title": "Set Password",
+              "description": "Create a strong password for wallet access",
+              "details": "This password encrypts your wallet data locally on your device"
+            },
+            {
+              "step": 3,
+              "title": "Add Funds",
+              "description": "Transfer XRP or purchase directly within the extension",
+              "details": "You can buy XRP using various payment methods or transfer from other wallets"
+            },
+            {
+              "step": 4,
+              "title": "Explore Features",
+              "description": "Start using token swapping, liquidity provision, and NFT trading",
+              "details": "Your extension is now ready to connect to DApps and manage XRPL assets"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "core-features",
+      "title": "Core Features",
+      "components": [
+        {
+          "type": "text",
+          "text": "The DropFi Extension provides comprehensive functionality for managing your XRPL assets:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Sending and Receiving",
+              "description": "Easily send and receive XRP and other tokens",
+              "icon": "ArrowUpRight",
+              "color": "bg-emerald-500/10"
+            },
+            {
+              "title": "Token Management",
+              "description": "Manage trust lines and issued tokens directly",
+              "icon": "Database",
+              "color": "bg-emerald-500/10"
+            },
+            {
+              "title": "DApp Connection",
+              "description": "Seamlessly connect to and interact with various DApps",
+              "icon": "Globe",
+              "color": "bg-emerald-500/10"
+            },
+            {
+              "title": "Transaction History",
+              "description": "View complete transaction history and details",
+              "icon": "Clock",
+              "color": "bg-emerald-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "quick-actions",
+      "title": "Quick Actions",
+      "components": [
+        {
+          "type": "text",
+          "text": "Common actions you can perform with the DropFi Extension:",
+          "variant": "body"
+        },
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Send XRP",
+              "description": "Click the DropFi icon, click \"Send,\" enter recipient address and amount, then confirm with your password",
+              "details": "Transactions are processed quickly on the XRP Ledger with minimal fees"
+            },
+            {
+              "step": 2,
+              "title": "Connect to DApp",
+              "description": "Visit any XRPL DApp, click \"Connect Wallet,\" approve the connection in the DropFi popup",
+              "details": "Start interacting with DApps immediately after connection approval"
+            },
+            {
+              "step": 3,
+              "title": "View NFTs",
+              "description": "Click the DropFi icon, navigate to the NFTs tab, browse your collection, click any NFT for details",
+              "details": "Manage and trade your NFT collection directly from the extension"
+            },
+            {
+              "step": 4,
+              "title": "Check Balances",
+              "description": "View your XRP balance and token holdings at a glance",
+              "details": "Real-time balance updates and transaction confirmations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "interface-guide",
+      "title": "Interface Guide",
+      "components": [
+        {
+          "type": "text",
+          "text": "Understanding the DropFi Extension interface:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Popup View",
+              "description": "Quick access to essential functions and balances",
+              "icon": "Maximize",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "Expanded View",
+              "description": "Full-screen interface for detailed wallet management",
+              "icon": "Maximize2",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "Settings Panel",
+              "description": "Configure security, appearance, and advanced options",
+              "icon": "Settings",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "Transaction Panel",
+              "description": "View and manage your transaction history",
+              "icon": "Clock",
+              "color": "bg-blue-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "security-settings",
+      "title": "Security Settings",
+      "components": [
+        {
+          "type": "text",
+          "text": "Configure your extension's security settings for maximum protection:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Password Protection",
+              "description": "Set and change your wallet access password",
+              "icon": "Shield",
+              "color": "bg-amber-500/10"
+            },
+            {
+              "title": "Auto-Lock Timer",
+              "description": "Configure automatic wallet locking for security",
+              "icon": "Clock",
+              "color": "bg-amber-500/10"
+            },
+            {
+              "title": "Transaction Confirmation",
+              "description": "Require password confirmation for all transactions",
+              "icon": "CheckCircle",
+              "color": "bg-amber-500/10"
+            },
+            {
+              "title": "DApp Permissions",
+              "description": "Manage which DApps can access your wallet",
+              "icon": "Globe",
+              "color": "bg-amber-500/10"
+            }
+          ]
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "warning",
+              "title": "Password Security",
+              "description": "Use a strong, unique password and never share it with anyone.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "Regular Updates",
+              "description": "Keep your extension updated for the latest security features.",
+              "icon": "Info"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "advanced-features",
+      "title": "Advanced Features",
+      "components": [
+        {
+          "type": "text",
+          "text": "Advanced functionality for power users:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Developer Mode",
+              "description": "Access advanced developer tools and debugging",
+              "icon": "Code",
+              "color": "bg-purple-500/10"
+            },
+            {
+              "title": "Custom Networks",
+              "description": "Connect to testnets and custom XRPL networks",
+              "icon": "Globe",
+              "color": "bg-purple-500/10"
+            },
+            {
+              "title": "Hardware Wallet Support",
+              "description": "Connect Ledger and other hardware wallets",
+              "icon": "Shield",
+              "color": "bg-purple-500/10"
+            },
+            {
+              "title": "Multi-Signature",
+              "description": "Set up multi-signature accounts for enhanced security",
+              "icon": "Users",
+              "color": "bg-purple-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "dapp-integration",
+      "title": "DApp Integration",
+      "components": [
+        {
+          "type": "text",
+          "text": "Connect your DropFi Extension to decentralized applications:",
+          "variant": "body"
+        },
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Visit a DApp",
+              "description": "Navigate to any XRPL-compatible decentralized application",
+              "details": "Look for the \"Connect Wallet\" or similar button"
+            },
+            {
+              "step": 2,
+              "title": "Request Connection",
+              "description": "Click the connect button and select DropFi Wallet",
+              "details": "The DApp will request permission to connect to your wallet"
+            },
+            {
+              "step": 3,
+              "title": "Approve Connection",
+              "description": "Review the connection request in the DropFi popup",
+              "details": "Check the permissions and click \"Approve\" to connect"
+            },
+            {
+              "step": 4,
+              "title": "Start Interacting",
+              "description": "Use the DApp's features with your connected wallet",
+              "details": "Transactions will require approval through the extension"
+            }
+          ]
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "info",
+              "title": "Permission Review",
+              "description": "Always review what permissions a DApp is requesting before connecting.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Security First",
+              "description": "Only connect to trusted DApps and never share your seed phrase.",
+              "icon": "AlertTriangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "troubleshooting",
+      "title": "Troubleshooting",
+      "components": [
+        {
+          "type": "text",
+          "text": "Common issues and solutions:",
+          "variant": "body"
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "warning",
+              "title": "Extension Not Loading",
+              "description": "Try refreshing the page or restarting your browser. Check if the extension is enabled in Chrome settings.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "Connection Issues",
+              "description": "Ensure the extension is unlocked and you're not in incognito mode. Check your internet connection.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Transaction Failures",
+              "description": "Verify you have sufficient XRP for fees and the transaction is properly formatted. Check network status.",
+              "icon": "AlertTriangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "support-resources",
+      "title": "Support & Resources",
+      "components": [
+        {
+          "type": "text",
+          "text": "Get help and learn more about the DropFi Extension:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Documentation",
+              "description": "Comprehensive guides and tutorials",
+              "icon": "BookOpen",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Community",
+              "description": "Join our Discord and Telegram communities",
+              "icon": "Users",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Support",
+              "description": "Get help from our support team",
+              "icon": "HelpCircle",
+              "color": "bg-green-500/10"
+            },
+            {
+              "title": "Updates",
+              "description": "Stay informed about new features",
+              "icon": "Bell",
+              "color": "bg-green-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "next-steps",
+      "title": "Next Steps",
+      "components": [
+        {
+          "type": "call-to-action",
+          "title": "Ready to Get Started?",
+          "description": "Now that you understand the DropFi Extension, install it and start exploring the XRP Ledger ecosystem.",
+          "buttons": [
+            {
+              "text": "Install Extension",
+              "icon": "Download",
+              "variant": "default",
+              "className": "bg-primary-500 hover:bg-primary-600",
+              "showArrow": true
+            },
+            {
+              "text": "Learn About Mobile App",
+              "variant": "outline",
+              "icon": "Smartphone",
+              "showArrow": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

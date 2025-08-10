@@ -1,0 +1,363 @@
+{
+  "title": "XRPL Injection API",
+  "description": "Integrate DropFi Wallet into your DApps with the XRPL Injection API. Seamlessly connect to the XRP Ledger without exposing private keys.",
+  "sections": [
+    {
+      "type": "section",
+      "id": "overview",
+      "title": "Overview",
+      "components": [
+        {
+          "type": "header",
+          "title": "XRPL Injection API",
+          "subtitle": "Connect your DApp to DropFi Wallet seamlessly",
+          "icon": "Code"
+        },
+        {
+          "type": "text",
+          "text": "The XRPL Injection API allows developers to integrate DropFi Wallet into their decentralized applications (DApps) by injecting the `window.xrpl` object into web pages. This facilitates seamless interaction with the XRP Ledger without exposing users' private keys.",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "Auto-Initialization",
+              "description": "Automatically initializes the injected window.xrpl provider",
+              "icon": "Zap",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Comprehensive Methods",
+              "description": "Full suite of methods for DApp integration",
+              "icon": "Code",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "React Integration",
+              "description": "Built-in React context and hooks for easy development",
+              "icon": "Code",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Cross-Platform",
+              "description": "Works with both browser extension and mobile webview",
+              "icon": "Globe",
+              "color": "bg-primary-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "installation",
+      "title": "Installation",
+      "components": [
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Install the Package",
+              "description": "Add the DropFi XRPL React package to your project",
+              "details": "Use npm or yarn to install the official DropFi XRPL React package"
+            },
+            {
+              "step": 2,
+              "title": "Import Dependencies",
+              "description": "Import the XrplProvider and useXrplReact hook",
+              "details": "These components provide the React context for accessing DropFi Wallet"
+            },
+            {
+              "step": 3,
+              "title": "Wrap Your App",
+              "description": "Wrap your application with the XrplProvider component",
+              "details": "This enables the XRPL injection API throughout your app"
+            },
+            {
+              "step": 4,
+              "title": "Use the Hook",
+              "description": "Access wallet functionality using the useXrplReact hook",
+              "details": "Connect, disconnect, and interact with the XRP Ledger seamlessly"
+            }
+          ]
+        },
+        {
+          "type": "code-block",
+          "title": "Package Installation",
+          "code": "npm install @dropfi/xrpl-react\n# or\nyarn add @dropfi/xrpl-react",
+          "language": "bash"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "basic-usage",
+      "title": "Basic Usage",
+      "components": [
+        {
+          "type": "text",
+          "text": "Here's how to integrate DropFi Wallet into a React application:",
+          "variant": "body"
+        },
+        {
+          "type": "code-block",
+          "title": "React Integration Example",
+          "code": "import { XrplProvider, useXrplReact } from '@dropfi/xrpl-react';\n\nexport default function App() {\n  return (\n    <XrplProvider>\n      <SomeComponent />\n    </XrplProvider>\n  );\n}\n\nfunction SomeComponent() {\n  const { address, connect, disconnect } = useXrplReact();\n\n  return (\n    <div>\n      <p>Address: {address ?? 'Not connected'}</p>\n      <button onClick={connect}>Connect Wallet</button>\n      <button onClick={disconnect}>Disconnect</button>\n    </div>\n  );\n}",
+          "language": "javascript"
+        },
+        {
+          "type": "text",
+          "text": "This setup enables your application to connect to the DropFi Wallet, manage connections, and handle transactions seamlessly.",
+          "variant": "body"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "api-methods",
+      "title": "API Methods",
+      "components": [
+        {
+          "type": "text",
+          "text": "The XRPL Injection API provides several key methods for DApp integration:",
+          "variant": "body"
+        },
+        {
+          "type": "api-endpoints",
+          "endpoints": [
+            {
+              "method": "POST",
+              "endpoint": "connect()",
+              "description": "Initiates connection to DropFi Wallet",
+              "params": "None - returns Promise<boolean>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "disconnect()",
+              "description": "Disconnects from DropFi Wallet",
+              "params": "None - returns Promise<void>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "sendTransaction(transaction)",
+              "description": "Sends a transaction to the XRP Ledger",
+              "params": "transaction: XRPLTransaction - returns Promise<string>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "signMessage(message)",
+              "description": "Signs a message using the connected wallet",
+              "params": "message: string - returns Promise<string>"
+            },
+            {
+              "method": "GET",
+              "endpoint": "getAddress()",
+              "description": "Returns the connected wallet address",
+              "params": "None - returns string | null"
+            },
+            {
+              "method": "GET",
+              "endpoint": "isConnected()",
+              "description": "Checks if wallet is connected",
+              "params": "None - returns boolean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "react-hooks",
+      "title": "React Hooks",
+      "components": [
+        {
+          "type": "text",
+          "text": "The @dropfi/xrpl-react package provides convenient React hooks for accessing wallet functionality:",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "useXrplReact",
+              "description": "Main hook for accessing wallet state and methods",
+              "icon": "Code",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "useXrplAccount",
+              "description": "Hook for accessing account-specific information",
+              "icon": "User",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "useXrplNetwork",
+              "description": "Hook for network configuration and status",
+              "icon": "Globe",
+              "color": "bg-blue-500/10"
+            },
+            {
+              "title": "useXrplTransactions",
+              "description": "Hook for transaction history and management",
+              "icon": "Database",
+              "color": "bg-blue-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "error-handling",
+      "title": "Error Handling",
+      "components": [
+        {
+          "type": "text",
+          "text": "Proper error handling is crucial when integrating with the XRPL Injection API:",
+          "variant": "body"
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "info",
+              "title": "Connection Errors",
+              "description": "Always handle cases where the wallet extension is not installed or the user rejects the connection.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Transaction Failures",
+              "description": "Implement proper error handling for failed transactions, including network issues and insufficient funds.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "User Rejection",
+              "description": "Handle cases where users reject transaction signing or connection requests gracefully.",
+              "icon": "Info"
+            }
+          ]
+        },
+        {
+          "type": "code-block",
+          "title": "Error Handling Example",
+          "code": "const { connect, sendTransaction } = useXrplReact();\n\nconst handleConnect = async () => {\n  try {\n    const connected = await connect();\n    if (connected) {\n      console.log('Wallet connected successfully');\n    }\n  } catch (error) {\n    console.error('Connection failed:', error);\n    // Handle connection error\n  }\n};",
+          "language": "javascript"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "best-practices",
+      "title": "Best Practices",
+      "components": [
+        {
+          "type": "text",
+          "text": "Follow these best practices when integrating with the XRPL Injection API:",
+          "variant": "body"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Always check if the wallet is connected before attempting operations",
+            "Implement proper loading states during wallet operations",
+            "Use TypeScript for better type safety and developer experience",
+            "Test your integration with both the browser extension and mobile app",
+            "Implement proper error boundaries and user feedback",
+            "Follow XRPL transaction best practices for optimal performance",
+            "Consider implementing retry logic for failed network requests"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "examples",
+      "title": "Complete Examples",
+      "components": [
+        {
+          "type": "text",
+          "text": "Here are complete examples of common DApp integration patterns:",
+          "variant": "body"
+        },
+        {
+          "type": "code-block",
+          "title": "Wallet Connection Component",
+          "code": "import React, { useState } from 'react';\nimport { useXrplReact } from '@dropfi/xrpl-react';\n\nfunction WalletConnect() {\n  const { address, connect, disconnect, isConnected } = useXrplReact();\n  const [isLoading, setIsLoading] = useState(false);\n\n  const handleConnect = async () => {\n    setIsLoading(true);\n    try {\n      await connect();\n    } catch (error) {\n      console.error('Connection failed:', error);\n    } finally {\n      setIsLoading(false);\n    }\n  };\n\n  const handleDisconnect = async () => {\n    try {\n      await disconnect();\n    } catch (error) {\n      console.error('Disconnection failed:', error);\n    }\n  };\n\n  if (isConnected) {\n    return (\n      <div>\n        <p>Connected: {address}</p>\n        <button onClick={handleDisconnect}>Disconnect</button>\n      </div>\n    );\n  }\n\n  return (\n    <button onClick={handleConnect} disabled={isLoading}>\n      {isLoading ? 'Connecting...' : 'Connect Wallet'}\n    </button>\n  );\n}\n\nexport default WalletConnect;",
+          "language": "javascript"
+        },
+        {
+          "type": "code-block",
+          "title": "Transaction Sending Component",
+          "code": "import React, { useState } from 'react';\nimport { useXrplReact } from '@dropfi/xrpl-react';\n\nfunction SendTransaction() {\n  const { sendTransaction, isConnected } = useXrplReact();\n  const [amount, setAmount] = useState('');\n  const [recipient, setRecipient] = useState('');\n  const [isLoading, setIsLoading] = useState(false);\n\n  const handleSend = async (e: React.FormEvent) => {\n    e.preventDefault();\n    if (!isConnected) return;\n\n    setIsLoading(true);\n    try {\n      const transaction = {\n        TransactionType: 'Payment',\n        Account: 'sender-address',\n        Destination: recipient,\n        Amount: amount\n      };\n\n      const hash = await sendTransaction(transaction);\n      console.log('Transaction sent:', hash);\n      // Handle success\n    } catch (error) {\n      console.error('Transaction failed:', error);\n      // Handle error\n    } finally {\n      setIsLoading(false);\n    }\n  };\n\n  return (\n    <form onSubmit={handleSend}>\n      <input\n        type=\"text\"\n        placeholder=\"Recipient Address\"\n        value={recipient}\n        onChange={(e) => setRecipient(e.target.value)}\n      />\n      <input\n        type=\"text\"\n        placeholder=\"Amount\"\n        value={amount}\n        onChange={(e) => setAmount(e.target.value)}\n      />\n      <button type=\"submit\" disabled={!isConnected || isLoading}>\n        {isLoading ? 'Sending...' : 'Send Transaction'}\n      </button>\n    </form>\n  );\n}\n\nexport default SendTransaction;",
+          "language": "javascript"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "troubleshooting",
+      "title": "Troubleshooting",
+      "components": [
+        {
+          "type": "text",
+          "text": "Common issues and solutions when integrating with the XRPL Injection API:",
+          "variant": "body"
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "warning",
+              "title": "Wallet Not Detected",
+              "description": "Ensure the DropFi extension is installed and the page is refreshed after installation.",
+              "icon": "AlertTriangle"
+            },
+            {
+              "type": "info",
+              "title": "Connection Timeout",
+              "description": "Check if the user has the DropFi extension open and is not blocking connection requests.",
+              "icon": "Info"
+            },
+            {
+              "type": "warning",
+              "title": "Method Not Found",
+              "description": "Verify you're using the latest version of the @dropfi/xrpl-react package.",
+              "icon": "AlertTriangle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "next-steps",
+      "title": "Next Steps",
+      "components": [
+        {
+          "type": "call-to-action",
+          "title": "Ready to Build?",
+          "description": "Now that you understand the XRPL Injection API, start building your DApp integration with DropFi Wallet.",
+          "buttons": [
+            {
+              "text": "View API Reference",
+              "icon": "Code",
+              "variant": "default",
+              "className": "bg-primary-500 hover:bg-primary-600",
+              "showArrow": true
+            },
+            {
+              "text": "Join Developer Community",
+              "variant": "outline",
+              "icon": "Users",
+              "showArrow": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dropfi.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin or private areas (if any exist in the future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all documentation pages
+Allow: /docs/
+Allow: /docs/*
+
+# Allow all assets
+Allow: /assets/
+Allow: /public/

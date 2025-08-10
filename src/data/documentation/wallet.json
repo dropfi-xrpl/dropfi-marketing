@@ -1,0 +1,123 @@
+{
+  "title": "Download DropFi Wallet",
+  "description": "Get started with DropFi - the most secure and user-friendly XRPL wallet for trading, liquidity provision, and NFT management.",
+  "sections": [
+    {
+      "type": "section",
+      "id": "download-dropfi",
+      "title": "Download DropFi",
+      "components": [
+        {
+          "type": "download-section",
+          "title": "Download DropFi today",
+          "description": "Get true decentralized access to the XRP network."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "getting-started",
+      "title": "Getting Started",
+      "components": [
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Download DropFi Wallet",
+              "description": "Choose your preferred platform and download the DropFi wallet application.",
+              "details": "DropFi is available on all major platforms including iOS, Android, Windows, macOS, and Linux. You can also access it directly through your web browser."
+            },
+            {
+              "step": 2,
+              "title": "Create Your Wallet",
+              "description": "Generate a new wallet or import an existing one using your seed phrase.",
+              "details": "For new users, DropFi will generate a secure 24-word seed phrase. Write this down and store it safely - it's your backup to recover your wallet."
+            },
+            {
+              "step": 3,
+              "title": "Secure Your Account",
+              "description": "Set up additional security measures like PIN, biometrics, or hardware wallet.",
+              "details": "Enable two-factor authentication and consider using a hardware wallet for maximum security when dealing with large amounts."
+            },
+            {
+              "step": 4,
+              "title": "Add Funds",
+              "description": "Purchase XRP or transfer existing funds to your DropFi wallet.",
+              "details": "You can buy XRP directly within the app using various payment methods, or transfer from other wallets or exchanges."
+            },
+            {
+              "step": 5,
+              "title": "Start Trading",
+              "description": "Connect to DropFi DEX and start swapping tokens with minimal fees.",
+              "details": "Your wallet is now ready to use with all DropFi features including token swapping, liquidity provision, and NFT trading."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "security-features",
+      "title": "Security Features",
+      "components": [
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "End-to-End Encryption",
+              "description": "All data is encrypted locally on your device",
+              "icon": "Shield",
+              "color": "bg-emerald-500/10"
+            },
+            {
+              "title": "Hardware Wallet Support",
+              "description": "Connect Ledger, Trezor, and other hardware wallets",
+              "icon": "Shield",
+              "color": "bg-emerald-500/10"
+            },
+            {
+              "title": "Biometric Authentication",
+              "description": "Use fingerprint or face recognition for quick access",
+              "icon": "Shield",
+              "color": "bg-emerald-500/10"
+            },
+            {
+              "title": "Multi-Signature Support",
+              "description": "Require multiple approvals for large transactions",
+              "icon": "Shield",
+              "color": "bg-emerald-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "ready-to-start",
+      "title": "Ready to Start Trading?",
+      "components": [
+        {
+          "type": "call-to-action",
+          "title": "Ready to Start Trading?",
+          "description": "Now that you have your wallet set up, learn how to use DropFi's powerful trading features.",
+          "buttons": [
+            {
+              "text": "Learn Token Swapping",
+              "icon": "ArrowRight",
+              "variant": "default",
+              "className": "bg-primary-500 hover:bg-primary-600",
+              "showArrow": true
+            },
+            {
+              "text": "Explore Liquidity Pools",
+              "variant": "outline",
+              "icon": "ArrowRight",
+              "showArrow": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
