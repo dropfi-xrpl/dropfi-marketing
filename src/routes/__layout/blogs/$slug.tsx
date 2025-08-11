@@ -1,15 +1,12 @@
-import { createFileRoute, Link as RouterLink, redirect, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
 import { getBlogPost } from '@/server/get-blog';
-import { BlogPost, extractFirstImage, formatBlogDate, calculateReadingTime } from '@/utils/blog-utils';
+import { extractFirstImage, formatBlogDate, calculateReadingTime } from '@/utils/blog-utils';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Calendar, Clock, ArrowLeft, Share2, BookOpen, CalendarDays, User } from 'lucide-react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import { createSEO } from '@/utils/create-seo';
-import { useEffect } from 'react';
 import Header from '@/components/Header';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -55,24 +52,16 @@ export const Route = createFileRoute('/__layout/blogs/$slug')({
     };
   },
   component: RouteComponent,
+  pendingComponent: BlogPostSkeleton,
+  pendingMs: 0,
+  pendingMinMs: 1000,
 });
 
 function RouteComponent() {
   const navigate = useNavigate();
   const { post } = Route.useLoaderData();
-  const {
-    data: blog,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ['blog', post?.slug],
-    queryFn: () => getBlogPost({ data: { slug: post?.slug || '' } }),
-    enabled: !!post?.slug,
-  });
 
-  const currentPost = blog?.data || post;
-
-  if (error || (!isLoading && !currentPost)) {
+  if (!post) {
     return (
       <div className="min-h-screen relative overflow-hidden">
         <AnimatedBackground />
@@ -93,22 +82,8 @@ function RouteComponent() {
     );
   }
 
-  if (isLoading || !currentPost) {
-    return (
-      <div className="min-h-screen relative overflow-hidden">
-        <AnimatedBackground />
-        <main className="relative z-10 min-h-screen">
-          <div className="container mx-auto pt-24 pb-16 px-4">
-            <BlogPostSkeleton />
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  const imageUrl = extractFirstImage(currentPost);
-  const readingTime = calculateReadingTime(currentPost);
-  const formattedDate = formatBlogDate(currentPost.created_at);
+  const readingTime = calculateReadingTime(post);
+  const formattedDate = formatBlogDate(post.created_at);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -133,7 +108,7 @@ function RouteComponent() {
               <span>Blog Post</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">{currentPost.title}</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">{post.title}</h1>
 
             {/* Meta Info */}
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-8">
@@ -154,14 +129,14 @@ function RouteComponent() {
             {/* Featured Image */}
             {/* {imageUrl && (
               <div className="relative w-full max-w-3xl mx-auto mb-8">
-                <img src={imageUrl} alt={currentPost.title} className="w-full h-auto rounded-2xl shadow-2xl" />
+                <img src={imageUrl} alt={post.title} className="w-full h-auto rounded-2xl shadow-2xl" />
               </div>
             )} */}
           </header>
 
           {/* Content */}
           <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
-            <TipTapRenderer content={currentPost.contentJSON} />
+            <TipTapRenderer content={post.contentJSON} />
           </div>
 
           <DownloadSection />
