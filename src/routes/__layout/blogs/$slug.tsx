@@ -26,7 +26,6 @@ export const Route = createFileRoute('/__layout/blogs/$slug')({
   loader: async ({ context, params }) => {
     const { slug } = params;
     const { data: post } = await getBlogPost({ data: { slug } });
-    if (!post) throw redirect({ to: '/blogs' });
     return { post };
   },
   head: ({ loaderData }) => {
