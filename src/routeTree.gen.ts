@@ -25,6 +25,7 @@ import { Route as _layoutBlogsSlugRouteImport } from './routes/__layout/blogs/$s
 import { Route as _documentationDocsPageRouteImport } from './routes/__documentation/docs/$page'
 import { Route as _adminPostBuilderIdRouteImport } from './routes/__admin/post-builder.$id'
 import { ServerRoute as SitemapDotxmlServerRouteImport } from './routes/sitemap[.]xml'
+import { ServerRoute as AppleAppSiteAssocationServerRouteImport } from './routes/apple-app-site-assocation'
 import { ServerRoute as ApiAuthSignServerRouteImport } from './routes/api/auth/sign'
 import { ServerRoute as ApiAuthLogoutServerRouteImport } from './routes/api/auth/logout'
 
@@ -97,6 +98,12 @@ const SitemapDotxmlServerRoute = SitemapDotxmlServerRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootServerRouteImport,
 } as any)
+const AppleAppSiteAssocationServerRoute =
+  AppleAppSiteAssocationServerRouteImport.update({
+    id: '/apple-app-site-assocation',
+    path: '/apple-app-site-assocation',
+    getParentRoute: () => rootServerRouteImport,
+  } as any)
 const ApiAuthSignServerRoute = ApiAuthSignServerRouteImport.update({
   id: '/api/auth/sign',
   path: '/api/auth/sign',
@@ -196,30 +203,47 @@ export interface RootRouteChildren {
   _layoutRoute: typeof _layoutRouteWithChildren
 }
 export interface FileServerRoutesByFullPath {
+  '/apple-app-site-assocation': typeof AppleAppSiteAssocationServerRoute
   '/sitemap.xml': typeof SitemapDotxmlServerRoute
   '/api/auth/logout': typeof ApiAuthLogoutServerRoute
   '/api/auth/sign': typeof ApiAuthSignServerRoute
 }
 export interface FileServerRoutesByTo {
+  '/apple-app-site-assocation': typeof AppleAppSiteAssocationServerRoute
   '/sitemap.xml': typeof SitemapDotxmlServerRoute
   '/api/auth/logout': typeof ApiAuthLogoutServerRoute
   '/api/auth/sign': typeof ApiAuthSignServerRoute
 }
 export interface FileServerRoutesById {
   __root__: typeof rootServerRouteImport
+  '/apple-app-site-assocation': typeof AppleAppSiteAssocationServerRoute
   '/sitemap.xml': typeof SitemapDotxmlServerRoute
   '/api/auth/logout': typeof ApiAuthLogoutServerRoute
   '/api/auth/sign': typeof ApiAuthSignServerRoute
 }
 export interface FileServerRouteTypes {
   fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/sitemap.xml' | '/api/auth/logout' | '/api/auth/sign'
+  fullPaths:
+    | '/apple-app-site-assocation'
+    | '/sitemap.xml'
+    | '/api/auth/logout'
+    | '/api/auth/sign'
   fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/sitemap.xml' | '/api/auth/logout' | '/api/auth/sign'
-  id: '__root__' | '/sitemap.xml' | '/api/auth/logout' | '/api/auth/sign'
+  to:
+    | '/apple-app-site-assocation'
+    | '/sitemap.xml'
+    | '/api/auth/logout'
+    | '/api/auth/sign'
+  id:
+    | '__root__'
+    | '/apple-app-site-assocation'
+    | '/sitemap.xml'
+    | '/api/auth/logout'
+    | '/api/auth/sign'
   fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
+  AppleAppSiteAssocationServerRoute: typeof AppleAppSiteAssocationServerRoute
   SitemapDotxmlServerRoute: typeof SitemapDotxmlServerRoute
   ApiAuthLogoutServerRoute: typeof ApiAuthLogoutServerRoute
   ApiAuthSignServerRoute: typeof ApiAuthSignServerRoute
@@ -329,6 +353,13 @@ declare module '@tanstack/react-start/server' {
       preLoaderRoute: typeof SitemapDotxmlServerRouteImport
       parentRoute: typeof rootServerRouteImport
     }
+    '/apple-app-site-assocation': {
+      id: '/apple-app-site-assocation'
+      path: '/apple-app-site-assocation'
+      fullPath: '/apple-app-site-assocation'
+      preLoaderRoute: typeof AppleAppSiteAssocationServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
     '/api/auth/sign': {
       id: '/api/auth/sign'
       path: '/api/auth/sign'
@@ -403,6 +434,7 @@ export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 const rootServerRouteChildren: RootServerRouteChildren = {
+  AppleAppSiteAssocationServerRoute: AppleAppSiteAssocationServerRoute,
   SitemapDotxmlServerRoute: SitemapDotxmlServerRoute,
   ApiAuthLogoutServerRoute: ApiAuthLogoutServerRoute,
   ApiAuthSignServerRoute: ApiAuthSignServerRoute,
