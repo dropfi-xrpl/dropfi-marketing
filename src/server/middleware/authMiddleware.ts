@@ -1,9 +1,9 @@
 import { createMiddleware } from '@tanstack/react-start';
-import { getCookie, getWebRequest } from '@tanstack/react-start/server';
+import { getCookie, getRequest } from '@tanstack/react-start/server';
 import jwt from 'jsonwebtoken';
 
 export const authMiddleware = createMiddleware({ type: 'function' }).server(async ({ next }) => {
-  const request = getWebRequest();
+  const request = getRequest();
   if (!request) {
     throw new Error('No request');
   }
