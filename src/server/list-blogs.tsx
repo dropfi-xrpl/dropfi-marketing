@@ -8,7 +8,7 @@ const supabase = createClient(supabaseUrl, supabaseKey!);
 export const listBlogs = createServerFn({
   method: 'GET',
 })
-  .validator(
+  .inputValidator(
     z.object({
       limit: z.number().optional().default(10),
       offset: z.number().optional().default(0),

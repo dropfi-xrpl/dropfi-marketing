@@ -61,7 +61,7 @@ import { editBlogPost } from '@/server/edit-blog';
 
 export const Route = createFileRoute('/__admin/post-builder/$id')({
   component: RouteComponent,
-  loader: async ({ context, params }) => {
+  loader: async ({ params }: { params: { id: string } }) => {
     const { id } = params;
     const { data: post } = await getBlogPost({ data: { slug: id } });
     return { post };

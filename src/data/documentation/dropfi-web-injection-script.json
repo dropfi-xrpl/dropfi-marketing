@@ -1,0 +1,242 @@
+{
+  "title": "DropFi Web Injection Script",
+  "description": "Understand how the DropFi web extension injects the window.xrpl provider into web pages. This script enables DApps to communicate with the DropFi browser extension.",
+  "sections": [
+    {
+      "type": "section",
+      "id": "overview",
+      "title": "Overview",
+      "components": [
+        {
+          "type": "header",
+          "title": "DropFi Web Injection Script",
+          "subtitle": "How window.xrpl is injected into web pages",
+          "icon": "Code"
+        },
+        {
+          "type": "text",
+          "text": "The DropFi web injection script is automatically injected into web pages by the DropFi browser extension. This script creates the `window.xrpl` object that DApps use to interact with the DropFi wallet. The script uses `window.postMessage` to communicate with the extension's content script.",
+          "variant": "body"
+        },
+        {
+          "type": "feature-grid",
+          "features": [
+            {
+              "title": "PostMessage Communication",
+              "description": "Uses window.postMessage to communicate with the extension",
+              "icon": "Zap",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Event-Driven Architecture",
+              "description": "Implements event listeners for wallet state changes",
+              "icon": "Code",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "Promise-Based API",
+              "description": "All methods return promises for async operations",
+              "icon": "Code",
+              "color": "bg-primary-500/10"
+            },
+            {
+              "title": "State Management",
+              "description": "Maintains wallet state including address, network, and accounts",
+              "icon": "Database",
+              "color": "bg-primary-500/10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "full-script",
+      "title": "Complete Injection Script",
+      "components": [
+        {
+          "type": "text",
+          "text": "Here is the complete web injection script that gets injected into web pages:",
+          "variant": "body"
+        },
+        {
+          "type": "code-block",
+          "title": "DropFi Web Injection Script",
+          "code": "(function () {\n  const XRPLProvider = {\n    isDropFi: true,\n    selectedAddress: null,\n    selectedNetwork: null,\n    connectedAccounts: [],\n    network: null,\n    endpoint: null,\n    listeners: {},\n    resolvers: {},\n\n    _emit(event, payload) {\n      (this.listeners[event] || []).forEach((fn) => fn(payload));\n    },\n\n    on(event, cb) {\n      this.listeners[event] = this.listeners[event] || [];\n      this.listeners[event].push(cb);\n    },\n\n    off(event, cb) {\n      if (!this.listeners[event]) return;\n      this.listeners[event] = this.listeners[event].filter((fn) => fn !== cb);\n    },\n\n    createXRPLPromise(method, data = {}) {\n      return new Promise((resolve) => {\n        this.resolvers[method] = (result) => {\n          if (method === 'xrpl_stateRequest' && result) {\n            this.selectedAddress = result.selectedAddress;\n            this.connectedAccounts = result.connectedAccounts;\n            this.network = result.network;\n            this.endpoint = result.endpoint;\n            this._emit('xrpl_selectedAddress', result.selectedAddress);\n            this._emit('xrpl_connectedAccounts', result.connectedAccounts);\n            this._emit('xrpl_selectedNetwork', result.network);\n          } else if (method === 'xrpl_connect' && result) {\n            this.selectedAddress = result;\n            this.connectedAccounts = [result];\n            this._emit('xrpl_selectedAddress', result);\n            this._emit('xrpl_connectedAccounts', [result]);\n          } else if (method === 'xrpl_disconnect') {\n            const old = this.selectedAddress;\n            this.selectedAddress = null;\n            this.connectedAccounts = [];\n            this._emit('xrpl_selectedAddress', null);\n            this._emit('xrpl_connectedAccounts', []);\n            this._emit('xrpl_disconnect', old);\n          } else if (method === 'xrpl_switchNetwork' && result) {\n            this.network = result.network;\n            this.endpoint = result.endpoint;\n            this._emit('xrpl_selectedNetwork', result.network);\n          }\n          resolve(result);\n        };\n\n        this.sendToHost(method, data);\n      });\n    },\n\n    sendToHost(method, params) {\n      window.postMessage(\n        {\n          source: 'xrpl-injected',\n          method,\n          params,\n        },\n        '*',\n      );\n    },\n\n    handleHostResponse(message) {\n      if (message?.source !== 'xrpl-content-script') return;\n      const { type, payload } = message;\n\n      const resolverMap = {\n        CONNECT_WALLET_RESPONSE: 'xrpl_connect',\n        SIGN_MESSAGE_RESPONSE: 'xrpl_signMessage',\n        SEND_TRANSACTION_RESPONSE: 'xrpl_sendTransaction',\n        DISCONNECT_RESPONSE: 'xrpl_disconnect',\n        SWITCH_NETWORK_RESPONSE: 'xrpl_switchNetwork',\n        CHANGE_ACCOUNT_RESPONSE: 'xrpl_changeAccount',\n        XRPL_INITIALIZE_RESPONSE: 'xrpl_stateRequest',\n      };\n\n      const methodKey = resolverMap[type];\n      if (methodKey && this.resolvers[methodKey]) {\n        this.resolvers[methodKey](payload);\n      }\n    },\n\n    // Public Methods\n    connect: (data) => XRPLProvider.createXRPLPromise('xrpl_connect', { data }),\n    disconnect: (address) => XRPLProvider.createXRPLPromise('xrpl_disconnect', { address }),\n    signMessage: (message) => XRPLProvider.createXRPLPromise('xrpl_signMessage', { message }),\n    sendTransaction: (tx) => XRPLProvider.createXRPLPromise('xrpl_sendTransaction', { tx }),\n    switchNetwork: (networkId) => XRPLProvider.createXRPLPromise('xrpl_switchNetwork', { networkId }),\n    changeAccount: (account) => XRPLProvider.createXRPLPromise('xrpl_changeAccount', { account }),\n    initialize: () => XRPLProvider.createXRPLPromise('xrpl_stateRequest'),\n\n    isConnected: () => !!XRPLProvider.selectedAddress,\n  };\n\n  window.addEventListener('message', (event) => {\n    if (event.source !== window) return;\n    XRPLProvider.handleHostResponse(event.data);\n  });\n\n  // Inject provider\n  window.xrpl = XRPLProvider;\n})();",
+          "language": "javascript"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "key-components",
+      "title": "Key Components",
+      "components": [
+        {
+          "type": "text",
+          "text": "The injection script consists of several key components:",
+          "variant": "body"
+        },
+        {
+          "type": "step-list",
+          "steps": [
+            {
+              "step": 1,
+              "title": "XRPLProvider Object",
+              "description": "The main provider object that implements the window.xrpl API",
+              "details": "Contains state properties (selectedAddress, network, etc.) and methods for wallet interaction"
+            },
+            {
+              "step": 2,
+              "title": "Event System",
+              "description": "Implements on/off/_emit for event-driven communication",
+              "details": "Allows DApps to listen for wallet state changes like address changes or network switches"
+            },
+            {
+              "step": 3,
+              "title": "Promise-Based Methods",
+              "description": "createXRPLPromise creates promises that resolve when the extension responds",
+              "details": "Each method (connect, disconnect, etc.) uses this pattern to handle async communication"
+            },
+            {
+              "step": 4,
+              "title": "Message Passing",
+              "description": "sendToHost and handleHostResponse manage communication with the extension",
+              "details": "Uses window.postMessage to send requests and listens for responses from the content script"
+            },
+            {
+              "step": 5,
+              "title": "State Synchronization",
+              "description": "Automatically updates internal state when responses are received",
+              "details": "Updates selectedAddress, connectedAccounts, network, and endpoint based on extension responses"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "communication-flow",
+      "title": "Communication Flow",
+      "components": [
+        {
+          "type": "text",
+          "text": "Understanding how the script communicates with the DropFi extension:",
+          "variant": "body"
+        },
+        {
+          "type": "tip-grid",
+          "tips": [
+            {
+              "type": "info",
+              "title": "Request Flow",
+              "description": "DApp calls window.xrpl.connect() → createXRPLPromise → sendToHost → window.postMessage → Extension receives message",
+              "icon": "ArrowRight"
+            },
+            {
+              "type": "info",
+              "title": "Response Flow",
+              "description": "Extension sends response → window.addEventListener receives → handleHostResponse → resolver called → Promise resolves",
+              "icon": "ArrowRight"
+            },
+            {
+              "type": "info",
+              "title": "Event Emission",
+              "description": "When state changes, _emit is called to notify all registered event listeners",
+              "icon": "Zap"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "public-api",
+      "title": "Public API Methods",
+      "components": [
+        {
+          "type": "text",
+          "text": "The window.xrpl object exposes the following public methods:",
+          "variant": "body"
+        },
+        {
+          "type": "api-endpoints",
+          "endpoints": [
+            {
+              "method": "POST",
+              "endpoint": "connect(data)",
+              "description": "Initiates connection to DropFi wallet",
+              "params": "data: object (optional) - returns Promise<string>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "disconnect(address)",
+              "description": "Disconnects from the wallet",
+              "params": "address: string (optional) - returns Promise<void>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "signMessage(message)",
+              "description": "Signs a message using the connected wallet",
+              "params": "message: string - returns Promise<string>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "sendTransaction(tx)",
+              "description": "Sends a transaction to the XRP Ledger",
+              "params": "tx: object - returns Promise<string>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "switchNetwork(networkId)",
+              "description": "Switches the active network",
+              "params": "networkId: string - returns Promise<object>"
+            },
+            {
+              "method": "POST",
+              "endpoint": "changeAccount(account)",
+              "description": "Changes the active account",
+              "params": "account: string - returns Promise<void>"
+            },
+            {
+              "method": "GET",
+              "endpoint": "initialize()",
+              "description": "Initializes and requests current wallet state",
+              "params": "None - returns Promise<object>"
+            },
+            {
+              "method": "GET",
+              "endpoint": "isConnected()",
+              "description": "Checks if wallet is currently connected",
+              "params": "None - returns boolean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "event-system",
+      "title": "Event System",
+      "components": [
+        {
+          "type": "text",
+          "text": "The injection script supports an event system for listening to wallet state changes:",
+          "variant": "body"
+        },
+        {
+          "type": "code-block",
+          "title": "Event Usage Example",
+          "code": "// Listen for address changes\nwindow.xrpl.on('xrpl_selectedAddress', (address) => {\n  console.log('Address changed:', address);\n});\n\n// Listen for network changes\nwindow.xrpl.on('xrpl_selectedNetwork', (network) => {\n  console.log('Network changed:', network);\n});\n\n// Listen for disconnect events\nwindow.xrpl.on('xrpl_disconnect', (oldAddress) => {\n  console.log('Disconnected from:', oldAddress);\n});\n\n// Remove event listener\nconst handler = (address) => console.log(address);\nwindow.xrpl.on('xrpl_selectedAddress', handler);\nwindow.xrpl.off('xrpl_selectedAddress', handler);",
+          "language": "javascript"
+        },
+        {
+          "type": "text",
+          "text": "Available events: xrpl_selectedAddress, xrpl_connectedAccounts, xrpl_selectedNetwork, xrpl_disconnect",
+          "variant": "small"
+        }
+      ]
+    }
+  ]
+}
+

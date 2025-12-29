@@ -178,7 +178,9 @@ const HeaderComponent: React.FC<any> = ({ title, subtitle, icon, className }) =>
 const RowComponent: React.FC<any> = ({ children, className, gap = 6 }) => {
   return (
     <div className={cn(`space-y-${gap}`, className)}>
-      {children?.map((child: DocumentationComponent, index: number) => renderComponent(child, index))}
+      {children?.map((child: DocumentationComponent, index: number) => (
+        <React.Fragment key={child.id || `row-child-${index}`}>{renderComponent(child, index)}</React.Fragment>
+      ))}
     </div>
   );
 };
@@ -193,7 +195,9 @@ const GridComponent: React.FC<any> = ({ children, className, cols = 1, gap = 6 }
 
   return (
     <div className={cn(`grid gap-${gap}`, gridCols[cols as keyof typeof gridCols], className)}>
-      {children?.map((child: DocumentationComponent, index: number) => renderComponent(child, index))}
+      {children?.map((child: DocumentationComponent, index: number) => (
+        <React.Fragment key={child.id || `grid-child-${index}`}>{renderComponent(child, index)}</React.Fragment>
+      ))}
     </div>
   );
 };
@@ -208,7 +212,9 @@ const CardComponent: React.FC<any> = ({ children, className, variant = 'default'
 
   return (
     <Card className={cn(cardVariants[variant as keyof typeof cardVariants], className)} {...props}>
-      {children?.map((child: DocumentationComponent, index: number) => renderComponent(child, index))}
+      {children?.map((child: DocumentationComponent, index: number) => (
+        <React.Fragment key={child.id || `card-child-${index}`}>{renderComponent(child, index)}</React.Fragment>
+      ))}
     </Card>
   );
 };
@@ -478,7 +484,13 @@ const ListComponent: React.FC<any> = ({ items, className }) => {
 };
 
 const DivComponent: React.FC<any> = ({ children, className }) => {
-  return <div className={className}>{children?.map((child: DocumentationComponent, index: number) => renderComponent(child, index))}</div>;
+  return (
+    <div className={className}>
+      {children?.map((child: DocumentationComponent, index: number) => (
+        <React.Fragment key={child.id || `div-child-${index}`}>{renderComponent(child, index)}</React.Fragment>
+      ))}
+    </div>
+  );
 };
 
 const IconComponent: React.FC<any> = ({ name, className }) => {
@@ -527,7 +539,11 @@ export const DocumentationPageBuilder: React.FC<DocumentationPageBuilderProps> =
           <h2 id={section.id} className="text-xl md:text-2xl font-semibold scroll-mt-20">
             {section.title}
           </h2>
-          {section.components.map((component, index) => renderComponent(component, index))}
+          {section.components.map((component, index) => (
+            <React.Fragment key={component.id || `component-${section.id}-${index}`}>
+              {renderComponent(component, index)}
+            </React.Fragment>
+          ))}
         </div>
       ))}
     </div>

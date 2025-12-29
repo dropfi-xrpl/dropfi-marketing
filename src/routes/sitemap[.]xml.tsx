@@ -1,10 +1,11 @@
 import { generateSitemapIndexXml } from '@/utils/sitemap';
+// @ts-ignore - createServerFileRoute is available at runtime
 import { createServerFileRoute } from '@tanstack/react-start/server';
 import { getPageMetadata } from '@/utils/documentation-loader';
 import { createClient } from '@supabase/supabase-js';
 
 export const ServerRoute = createServerFileRoute('/sitemap.xml').methods({
-  GET: async ({ request, params }) => {
+  GET: async ({ request, params }: { request: Request; params: Record<string, never> }) => {
     const baseUrl = `https://dropfi.app`;
 
     // Get all available documentation pages

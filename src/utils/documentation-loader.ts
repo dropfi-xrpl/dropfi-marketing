@@ -8,6 +8,8 @@ import walletData from '@/data/documentation/wallet.json';
 import xrplInjectionApiData from '@/data/documentation/xrpl-injection-api.json';
 import dropfiExtensionData from '@/data/documentation/dropfi-extension.json';
 import dropfiMobileAppData from '@/data/documentation/dropfi-mobile-app.json';
+import dropfiWebInjectionScriptData from '@/data/documentation/dropfi-web-injection-script.json';
+import dropfiMobileInjectionScriptData from '@/data/documentation/dropfi-mobile-injection-script.json';
 
 // Map of all available documentation pages
 export const documentationPages: Record<string, DocumentationPage> = {
@@ -18,6 +20,8 @@ export const documentationPages: Record<string, DocumentationPage> = {
   'xrpl-injection-api': xrplInjectionApiData as DocumentationPage,
   'dropfi-extension': dropfiExtensionData as DocumentationPage,
   'dropfi-mobile-app': dropfiMobileAppData as DocumentationPage,
+  'dropfi-web-injection-script': dropfiWebInjectionScriptData as DocumentationPage,
+  'dropfi-mobile-injection-script': dropfiMobileInjectionScriptData as DocumentationPage,
 };
 
 // Get all available page slugs

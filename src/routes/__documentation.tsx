@@ -2,7 +2,7 @@ import { createFileRoute, Outlet } from '@tanstack/react-router';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Download, ArrowUpRight, Sparkles, Palette, Code, Globe, Smartphone, Menu, X } from 'lucide-react';
+import { BookOpen, Download, ArrowUpRight, Sparkles, Palette, Code, Globe, Smartphone, Menu, X, FileCode } from 'lucide-react';
 import { Link, useLocation } from '@tanstack/react-router';
 import { cn } from '@/lib/utils';
 import Header from '@/components/Header';
@@ -24,6 +24,8 @@ const pageIcons: Record<string, any> = {
   'xrpl-injection-api': Code,
   'dropfi-extension': Globe,
   'dropfi-mobile-app': Smartphone,
+  'dropfi-web-injection-script': Code,
+  'dropfi-mobile-injection-script': FileCode,
 };
 
 // Badge mapping for documentation pages
@@ -35,6 +37,8 @@ const pageBadges: Record<string, string> = {
   'xrpl-injection-api': 'Technical',
   'dropfi-extension': 'Browser',
   'dropfi-mobile-app': 'Mobile',
+  'dropfi-web-injection-script': 'Technical',
+  'dropfi-mobile-injection-script': 'Technical',
 };
 
 // Generate documentation sections dynamically
@@ -78,7 +82,7 @@ const documentationSections = [
   {
     title: 'Developer Resources',
     items: getPageMetadata()
-      .filter((page) => ['xrpl-injection-api'].includes(page.slug))
+      .filter((page) => ['xrpl-injection-api', 'dropfi-web-injection-script', 'dropfi-mobile-injection-script'].includes(page.slug))
       .map((page) => ({
         title: page.title,
         description: page.description,

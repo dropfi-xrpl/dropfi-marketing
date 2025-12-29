@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Download, Code, TrendingUp, ArrowRight, Star, Users, Rocket, Target, Globe, Smartphone } from 'lucide-react';
+import { BookOpen, Download, Code, TrendingUp, ArrowRight, Star, Users, Rocket, Target, Globe, Smartphone, FileCode } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
 import { cn } from '@/lib/utils';
 import { getPageMetadata } from '@/utils/documentation-loader';
@@ -33,6 +33,8 @@ const pageIcons: Record<string, any> = {
   'xrpl-injection-api': Code,
   'dropfi-extension': Globe,
   'dropfi-mobile-app': Smartphone,
+  'dropfi-web-injection-script': Code,
+  'dropfi-mobile-injection-script': FileCode,
 };
 
 // Badge mapping for documentation pages
@@ -41,6 +43,8 @@ const pageBadges: Record<string, string> = {
   'xrpl-injection-api': 'Technical',
   'dropfi-extension': 'Browser',
   'dropfi-mobile-app': 'Mobile',
+  'dropfi-web-injection-script': 'Technical',
+  'dropfi-mobile-injection-script': 'Technical',
 };
 
 // Generate documentation sections dynamically based on available pages
@@ -77,14 +81,19 @@ const documentationSections = [
     title: 'Developer Resources',
     description: 'Technical documentation and API references',
     items: getPageMetadata()
-      .filter((page) => ['xrpl-injection-api'].includes(page.slug))
+      .filter((page) => ['xrpl-injection-api', 'dropfi-web-injection-script', 'dropfi-mobile-injection-script'].includes(page.slug))
       .map((page) => ({
         title: page.title,
         description: page.description,
         href: `/docs/${page.slug}`,
         icon: pageIcons[page.slug] || BookOpen,
         badge: pageBadges[page.slug],
-        color: 'from-slate-500 to-slate-600',
+        color:
+          page.slug === 'dropfi-web-injection-script'
+            ? 'from-blue-500 to-blue-600'
+            : page.slug === 'dropfi-mobile-injection-script'
+            ? 'from-indigo-500 to-indigo-600'
+            : 'from-slate-500 to-slate-600',
       })),
   },
 ];

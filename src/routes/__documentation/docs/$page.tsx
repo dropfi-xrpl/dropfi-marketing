@@ -4,7 +4,7 @@ import { getPage, getAvailablePages } from '@/utils/documentation-loader';
 import { createSEO } from '@/utils/create-seo';
 
 export const Route = createFileRoute('/__documentation/docs/$page')({
-  head: ({ params }) => {
+  head: ({ params }: { params: { page: string } }) => {
     const { page } = params;
     const pageData = getPage(page);
 

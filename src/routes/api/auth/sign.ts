@@ -1,3 +1,4 @@
+// @ts-ignore - createServerFileRoute is available at runtime
 import { createServerFileRoute } from '@tanstack/react-start/server';
 import { json } from '@tanstack/react-start';
 import dayjs from 'dayjs';
@@ -9,7 +10,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey!);
 
 export const ServerRoute = createServerFileRoute('/api/auth/sign').methods({
-  POST: async ({ request }) => {
+  POST: async ({ request }: { request: Request }) => {
     const { message, publicKey, signature } = await request.json();
     const timestampLine = message.split('\n').find((line: string) => line.startsWith('Timestamp:'));
     const timestampStr = timestampLine?.replace('Timestamp:', '').trim();

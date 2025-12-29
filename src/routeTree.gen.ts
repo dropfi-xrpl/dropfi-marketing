@@ -8,8 +8,6 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createServerRootRoute } from '@tanstack/react-start/server'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as _layoutRouteImport } from './routes/__layout'
 import { Route as _documentationRouteImport } from './routes/__documentation'
@@ -24,12 +22,6 @@ import { Route as _documentationDocsIndexRouteImport } from './routes/__document
 import { Route as _layoutBlogsSlugRouteImport } from './routes/__layout/blogs/$slug'
 import { Route as _documentationDocsPageRouteImport } from './routes/__documentation/docs/$page'
 import { Route as _adminPostBuilderIdRouteImport } from './routes/__admin/post-builder.$id'
-import { ServerRoute as SitemapDotxmlServerRouteImport } from './routes/sitemap[.]xml'
-import { ServerRoute as AppleAppSiteAssocationServerRouteImport } from './routes/apple-app-site-assocation'
-import { ServerRoute as ApiAuthSignServerRouteImport } from './routes/api/auth/sign'
-import { ServerRoute as ApiAuthLogoutServerRouteImport } from './routes/api/auth/logout'
-
-const rootServerRouteImport = createServerRootRoute()
 
 const _layoutRoute = _layoutRouteImport.update({
   id: '/__layout',
@@ -92,27 +84,6 @@ const _adminPostBuilderIdRoute = _adminPostBuilderIdRouteImport.update({
   id: '/post-builder/$id',
   path: '/post-builder/$id',
   getParentRoute: () => _adminRoute,
-} as any)
-const SitemapDotxmlServerRoute = SitemapDotxmlServerRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootServerRouteImport,
-} as any)
-const AppleAppSiteAssocationServerRoute =
-  AppleAppSiteAssocationServerRouteImport.update({
-    id: '/apple-app-site-assocation',
-    path: '/apple-app-site-assocation',
-    getParentRoute: () => rootServerRouteImport,
-  } as any)
-const ApiAuthSignServerRoute = ApiAuthSignServerRouteImport.update({
-  id: '/api/auth/sign',
-  path: '/api/auth/sign',
-  getParentRoute: () => rootServerRouteImport,
-} as any)
-const ApiAuthLogoutServerRoute = ApiAuthLogoutServerRouteImport.update({
-  id: '/api/auth/logout',
-  path: '/api/auth/logout',
-  getParentRoute: () => rootServerRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -201,52 +172,6 @@ export interface RootRouteChildren {
   _adminRoute: typeof _adminRouteWithChildren
   _documentationRoute: typeof _documentationRouteWithChildren
   _layoutRoute: typeof _layoutRouteWithChildren
-}
-export interface FileServerRoutesByFullPath {
-  '/apple-app-site-assocation': typeof AppleAppSiteAssocationServerRoute
-  '/sitemap.xml': typeof SitemapDotxmlServerRoute
-  '/api/auth/logout': typeof ApiAuthLogoutServerRoute
-  '/api/auth/sign': typeof ApiAuthSignServerRoute
-}
-export interface FileServerRoutesByTo {
-  '/apple-app-site-assocation': typeof AppleAppSiteAssocationServerRoute
-  '/sitemap.xml': typeof SitemapDotxmlServerRoute
-  '/api/auth/logout': typeof ApiAuthLogoutServerRoute
-  '/api/auth/sign': typeof ApiAuthSignServerRoute
-}
-export interface FileServerRoutesById {
-  __root__: typeof rootServerRouteImport
-  '/apple-app-site-assocation': typeof AppleAppSiteAssocationServerRoute
-  '/sitemap.xml': typeof SitemapDotxmlServerRoute
-  '/api/auth/logout': typeof ApiAuthLogoutServerRoute
-  '/api/auth/sign': typeof ApiAuthSignServerRoute
-}
-export interface FileServerRouteTypes {
-  fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths:
-    | '/apple-app-site-assocation'
-    | '/sitemap.xml'
-    | '/api/auth/logout'
-    | '/api/auth/sign'
-  fileServerRoutesByTo: FileServerRoutesByTo
-  to:
-    | '/apple-app-site-assocation'
-    | '/sitemap.xml'
-    | '/api/auth/logout'
-    | '/api/auth/sign'
-  id:
-    | '__root__'
-    | '/apple-app-site-assocation'
-    | '/sitemap.xml'
-    | '/api/auth/logout'
-    | '/api/auth/sign'
-  fileServerRoutesById: FileServerRoutesById
-}
-export interface RootServerRouteChildren {
-  AppleAppSiteAssocationServerRoute: typeof AppleAppSiteAssocationServerRoute
-  SitemapDotxmlServerRoute: typeof SitemapDotxmlServerRoute
-  ApiAuthLogoutServerRoute: typeof ApiAuthLogoutServerRoute
-  ApiAuthSignServerRoute: typeof ApiAuthSignServerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -344,38 +269,6 @@ declare module '@tanstack/react-router' {
     }
   }
 }
-declare module '@tanstack/react-start/server' {
-  interface ServerFileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-    '/apple-app-site-assocation': {
-      id: '/apple-app-site-assocation'
-      path: '/apple-app-site-assocation'
-      fullPath: '/apple-app-site-assocation'
-      preLoaderRoute: typeof AppleAppSiteAssocationServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-    '/api/auth/sign': {
-      id: '/api/auth/sign'
-      path: '/api/auth/sign'
-      fullPath: '/api/auth/sign'
-      preLoaderRoute: typeof ApiAuthSignServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-    '/api/auth/logout': {
-      id: '/api/auth/logout'
-      path: '/api/auth/logout'
-      fullPath: '/api/auth/logout'
-      preLoaderRoute: typeof ApiAuthLogoutServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-  }
-}
 
 interface _adminRouteChildren {
   _adminPostBuilderIdRoute: typeof _adminPostBuilderIdRoute
@@ -433,12 +326,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-const rootServerRouteChildren: RootServerRouteChildren = {
-  AppleAppSiteAssocationServerRoute: AppleAppSiteAssocationServerRoute,
-  SitemapDotxmlServerRoute: SitemapDotxmlServerRoute,
-  ApiAuthLogoutServerRoute: ApiAuthLogoutServerRoute,
-  ApiAuthSignServerRoute: ApiAuthSignServerRoute,
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
 }
-export const serverRouteTree = rootServerRouteImport
-  ._addFileChildren(rootServerRouteChildren)
-  ._addFileTypes<FileServerRouteTypes>()

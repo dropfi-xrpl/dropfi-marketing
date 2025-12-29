@@ -1,7 +1,8 @@
+// @ts-ignore - createServerFileRoute is available at runtime
 import { createServerFileRoute } from '@tanstack/react-start/server';
 
 export const ServerRoute = createServerFileRoute('/apple-app-site-assocation').methods({
-  GET: async ({ request, params }) => {
+  GET: async ({ request, params }: { request: Request; params: Record<string, never> }) => {
     return new Response(
       JSON.stringify({
         applinks: {

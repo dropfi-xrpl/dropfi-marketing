@@ -8,13 +8,16 @@ const supabase = createClient(supabaseUrl, supabaseKey!);
 export const getBlogPost = createServerFn({
   method: 'GET',
 })
-  .validator(
+  .inputValidator(
     z.object({
       slug: z.string(),
     }),
   )
   .handler(async ({ data: input }) => {
     const { slug } = input;
-    const data = await supabase.from('post').select().eq('slug', slug).single();
+    const { data, error } = await supabase.from('post').select().eq('slug', slug).single();
+    if (error) {
+      throw new Error(error.message);
+    }
     return data;
   });

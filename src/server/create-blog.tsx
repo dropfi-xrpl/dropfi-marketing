@@ -9,7 +9,7 @@ const supabase = createClient(supabaseUrl, supabaseKey!);
 export const createBlogPost = createServerFn({
   method: 'POST',
 })
-  .validator(
+  .inputValidator(
     z.object({
       title: z.string(),
       contentJSON: z.any(),

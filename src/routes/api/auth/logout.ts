@@ -1,3 +1,4 @@
+// @ts-ignore - createServerFileRoute is available at runtime
 import { createServerFileRoute } from '@tanstack/react-start/server';
 import { json } from '@tanstack/react-start';
 
