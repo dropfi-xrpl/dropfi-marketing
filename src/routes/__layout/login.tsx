@@ -38,6 +38,7 @@ function RouteComponent() {
     setIsConnecting(true);
 
     try {
+      console.log('connectDropFi');
       const address = await connectDropFi();
       if (!address) throw new Error('User canceled request');
 
