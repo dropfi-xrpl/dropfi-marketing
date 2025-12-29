@@ -1,13 +1,16 @@
 // @ts-ignore - createServerFileRoute is available at runtime
-import { createServerFileRoute } from '@tanstack/react-start/server';
-import { json } from '@tanstack/react-start';
+import { createFileRoute } from '@tanstack/react-router';
 
-export const ServerRoute = createServerFileRoute('/api/auth/logout').methods({
-  POST: async () => {
-    const headers = new Headers();
+export const Route = createFileRoute('/api/auth/logout')({
+  server: {
+    handlers: {
+      POST: async () => {
+        const headers = new Headers();
 
-    headers.append('Set-Cookie', `session=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
+        headers.append('Set-Cookie', `session=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
 
-    return json({ success: true }, { status: 200, headers });
+        return new Response('OK', { status: 200, headers });
+      },
+    },
   },
 });

@@ -19,6 +19,8 @@ import { Route as _layoutPrivacyPolicyRouteImport } from './routes/__layout/priv
 import { Route as _layoutLoginRouteImport } from './routes/__layout/login'
 import { Route as _layoutBlogsIndexRouteImport } from './routes/__layout/blogs/index'
 import { Route as _documentationDocsIndexRouteImport } from './routes/__documentation/docs/index'
+import { Route as ApiAuthSignRouteImport } from './routes/api/auth/sign'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as _layoutBlogsSlugRouteImport } from './routes/__layout/blogs/$slug'
 import { Route as _documentationDocsPageRouteImport } from './routes/__documentation/docs/$page'
 import { Route as _adminPostBuilderIdRouteImport } from './routes/__admin/post-builder.$id'
@@ -70,6 +72,16 @@ const _documentationDocsIndexRoute = _documentationDocsIndexRouteImport.update({
   path: '/docs/',
   getParentRoute: () => _documentationRoute,
 } as any)
+const ApiAuthSignRoute = ApiAuthSignRouteImport.update({
+  id: '/api/auth/sign',
+  path: '/api/auth/sign',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const _layoutBlogsSlugRoute = _layoutBlogsSlugRouteImport.update({
   id: '/blogs/$slug',
   path: '/blogs/$slug',
@@ -95,6 +107,8 @@ export interface FileRoutesByFullPath {
   '/post-builder/$id': typeof _adminPostBuilderIdRoute
   '/docs/$page': typeof _documentationDocsPageRoute
   '/blogs/$slug': typeof _layoutBlogsSlugRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/sign': typeof ApiAuthSignRoute
   '/docs': typeof _documentationDocsIndexRoute
   '/blogs': typeof _layoutBlogsIndexRoute
 }
@@ -107,6 +121,8 @@ export interface FileRoutesByTo {
   '/post-builder/$id': typeof _adminPostBuilderIdRoute
   '/docs/$page': typeof _documentationDocsPageRoute
   '/blogs/$slug': typeof _layoutBlogsSlugRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/sign': typeof ApiAuthSignRoute
   '/docs': typeof _documentationDocsIndexRoute
   '/blogs': typeof _layoutBlogsIndexRoute
 }
@@ -123,6 +139,8 @@ export interface FileRoutesById {
   '/__admin/post-builder/$id': typeof _adminPostBuilderIdRoute
   '/__documentation/docs/$page': typeof _documentationDocsPageRoute
   '/__layout/blogs/$slug': typeof _layoutBlogsSlugRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
+  '/api/auth/sign': typeof ApiAuthSignRoute
   '/__documentation/docs/': typeof _documentationDocsIndexRoute
   '/__layout/blogs/': typeof _layoutBlogsIndexRoute
 }
@@ -137,6 +155,8 @@ export interface FileRouteTypes {
     | '/post-builder/$id'
     | '/docs/$page'
     | '/blogs/$slug'
+    | '/api/auth/logout'
+    | '/api/auth/sign'
     | '/docs'
     | '/blogs'
   fileRoutesByTo: FileRoutesByTo
@@ -149,6 +169,8 @@ export interface FileRouteTypes {
     | '/post-builder/$id'
     | '/docs/$page'
     | '/blogs/$slug'
+    | '/api/auth/logout'
+    | '/api/auth/sign'
     | '/docs'
     | '/blogs'
   id:
@@ -164,6 +186,8 @@ export interface FileRouteTypes {
     | '/__admin/post-builder/$id'
     | '/__documentation/docs/$page'
     | '/__layout/blogs/$slug'
+    | '/api/auth/logout'
+    | '/api/auth/sign'
     | '/__documentation/docs/'
     | '/__layout/blogs/'
   fileRoutesById: FileRoutesById
@@ -172,6 +196,8 @@ export interface RootRouteChildren {
   _adminRoute: typeof _adminRouteWithChildren
   _documentationRoute: typeof _documentationRouteWithChildren
   _layoutRoute: typeof _layoutRouteWithChildren
+  ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
+  ApiAuthSignRoute: typeof ApiAuthSignRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -245,6 +271,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/docs'
       preLoaderRoute: typeof _documentationDocsIndexRouteImport
       parentRoute: typeof _documentationRoute
+    }
+    '/api/auth/sign': {
+      id: '/api/auth/sign'
+      path: '/api/auth/sign'
+      fullPath: '/api/auth/sign'
+      preLoaderRoute: typeof ApiAuthSignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/__layout/blogs/$slug': {
       id: '/__layout/blogs/$slug'
@@ -322,6 +362,8 @@ const rootRouteChildren: RootRouteChildren = {
   _adminRoute: _adminRouteWithChildren,
   _documentationRoute: _documentationRouteWithChildren,
   _layoutRoute: _layoutRouteWithChildren,
+  ApiAuthLogoutRoute: ApiAuthLogoutRoute,
+  ApiAuthSignRoute: ApiAuthSignRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
