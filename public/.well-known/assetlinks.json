@@ -1,10 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": ["delegate_permission/common.handle_all_urls", "delegate_permission/common.get_login_creds"],
     "target": {
       "namespace": "android_app",
       "package_name": "com.dropfi.app",
-      "sha256_cert_fingerprints": ["11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF"]
+      "sha256_cert_fingerprints": [
+        "11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF",
+        "EE:D7:1E:4F:53:82:39:47:FF:25:41:1E:5D:4E:02:46:30:B0:E3:17:FC:B2:38:DC:DD:16:28:99:7C:22:18:25"
+      ]
     }
   }
 ]
